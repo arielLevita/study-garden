@@ -8,13 +8,13 @@ const AudioSelector = () => {
 
     const audios = [
         {
-            id: 'music',
+            name: 'musicLoFi',
             value: 'musicLoFi',
             label: 'Música Lo-Fi',
             source: 'https://cdn.pixabay.com/audio/2024/01/15/audio_9914e58808.mp3'
         },
         {
-            id: 'rainSound',
+            name: 'rainSound',
             value: 'rainSound',
             label: 'Sonido de lluvia',
             source: 'https://cdn.pixabay.com/download/audio/2024/05/21/audio_08ef8717b4.mp3'
@@ -49,7 +49,7 @@ const AudioSelector = () => {
             <div>
                 {
                     audios?.map((audio) => (
-                        <div key={audio.id}>
+                        <div key={audio.name}>
                             <input
                                 type="radio"
                                 name="audio"
