@@ -1,21 +1,24 @@
 // import { useState } from 'react'
 import './App.css'
+import Topbar from './components/Topbar';
+import AudioPage from './pages/AudioPage';
 import Navbar from './components/Navbar';
-import AudioSelector from './pages/AudioSelector';
+import HomePage from './pages/HomePage';
 // import TaskConfiguration from './pages/TaskConfiguration';
 
 function App() {
   return (
     <>
-      <div className='flex flex-col h-screen max-w-md mx-auto border border-black'>
+      <div className='flex flex-col h-screen max-w-md mx-auto overflow-hidden border border-black'>
 
-        <div>navbar</div>
+        <div>
+          <Topbar />
+        </div>
 
-        <div className='flex-grow-1 h-full p-4 border border-green-700'>
-          <div>
+        <div className='grow'>
             {/* <TaskConfiguration /> */}
-            <AudioSelector />
-          </div>
+            {/* <AudioPage /> */}
+            <HomePage />
         </div>
 
         <div>
