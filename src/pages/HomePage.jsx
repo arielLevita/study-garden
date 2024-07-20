@@ -16,7 +16,7 @@ const HomePage = () => {
     const [countdownApi, setCountdownApi] = useState(null);
 
     const [taskRunning, setTaskRunning] = useState(false);
-    
+
     const audioRef = useRef(null);
 
     const selectedAudio = 'https://cdn.pixabay.com/audio/2024/01/15/audio_9914e58808.mp3';
@@ -136,7 +136,7 @@ const HomePage = () => {
                     </div>
                 </div>
 
-                <div className="grow flex flex-col justify-around items-center py-8">
+                <div className="[flex-grow:8] flex flex-col justify-around items-center py-8">
                     <h2 className="font-semibold text-3xl">{taskTitle}</h2>
                     <div>
                         <Lottie
@@ -149,7 +149,7 @@ const HomePage = () => {
                     </div>
                 </div>
 
-                <div className="flex justify-center items-center">
+                <div className="flex justify-center items-center my-4">
                     <button type='button' onClick={handleDecreaseTime}>
                         <svg className="w-6 fill-black" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M200-440v-80h560v80H200Z" /></svg>
                     </button>
@@ -170,26 +170,28 @@ const HomePage = () => {
                     </button>
                 </div>
 
-                {
-                    taskRunning
-                        ? <button
-                            className="flex justify-center items-center gap-3 w-2/3 bg-naranja rounded-full p-4 mx-auto mt-8 mb-20"
-                            type="button"
-                            onClick={handlePauseClick}
-                        >
-                            <svg className="w-8 fill-black" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M520-200v-560h240v560H520Zm-320 0v-560h240v560H200Zm400-80h80v-400h-80v400Zm-320 0h80v-400h-80v400Zm0-400v400-400Zm320 0v400-400Z" /></svg>
-                            <span className="text-black text-xl uppercase font-bold">pausar</span>
-                        </button>
-                        : <button
-                            className="flex justify-center items-center gap-3 w-2/3 bg-naranja rounded-full p-4 mx-auto mt-8 mb-20"
-                            type="button"
-                            onClick={handleStartClick}
-                        >
-                            <svg className="w-8 fill-black" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M320-200v-560l440 280-440 280Zm80-280Zm0 134 210-134-210-134v268Z" /></svg>
-                            <span className="text-black text-xl uppercase font-bold">iniciar</span>
-                        </button>
-                }
 
+                <div className='[flex-grow:2] flex justify-center items-center mb-8'>
+                    {
+                        taskRunning
+                            ? <button
+                                className="flex justify-center items-center gap-3 w-2/3 bg-naranja rounded-full p-4"
+                                type="button"
+                                onClick={handlePauseClick}
+                            >
+                                <svg className="w-8 fill-black" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M520-200v-560h240v560H520Zm-320 0v-560h240v560H200Zm400-80h80v-400h-80v400Zm-320 0h80v-400h-80v400Zm0-400v400-400Zm320 0v400-400Z" /></svg>
+                                <span className="text-black text-xl uppercase font-bold">pausar</span>
+                            </button>
+                            : <button
+                                className="flex justify-center items-center gap-3 w-2/3 bg-naranja rounded-full p-4"
+                                type="button"
+                                onClick={handleStartClick}
+                            >
+                                <svg className="w-8 fill-black" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M320-200v-560l440 280-440 280Zm80-280Zm0 134 210-134-210-134v268Z" /></svg>
+                                <span className="text-black text-xl uppercase font-bold">iniciar</span>
+                            </button>
+                    }
+                </div>
             </div>
 
             <audio

@@ -4,7 +4,7 @@ import Topbar from './components/Topbar';
 import AudioPage from './pages/AudioPage';
 import Navbar from './components/Navbar';
 import HomePage from './pages/HomePage';
-// import TaskConfiguration from './pages/TaskConfiguration';
+import TaskConfiguration from './pages/TaskConfiguration';
 
 function App() {
   return (
@@ -16,9 +16,9 @@ function App() {
         </div>
 
         <div className='grow'>
-            {/* <TaskConfiguration /> */}
+            <TaskConfiguration />
             {/* <AudioPage /> */}
-            <HomePage />
+            {/* <HomePage /> */}
         </div>
 
         <div>
