@@ -10,8 +10,9 @@ const HomePage = () => {
 
     const lottieRef = useRef();
 
-    const [timerValue, setTimerValue] = useState(2400)
-    const [date, setDate] = useState(Date.now() + (timerValue * 1000));
+    const [timerValue, setTimerValue] = useState(40)
+    let timerInSeconds = timerValue * 60
+    const [date, setDate] = useState(Date.now() + (timerInSeconds * 1000));
     const countdownRef = useRef(null);
     const [countdownApi, setCountdownApi] = useState(null);
 
@@ -55,7 +56,6 @@ const HomePage = () => {
     const toggleTaskRunning = () => {
         setTaskRunning(!taskRunning);
     };
-    console.log('taskRunning está en: ' + taskRunning)
 
     const toggleMute = () => {
         const audioElement = audioRef.current;
@@ -66,8 +66,8 @@ const HomePage = () => {
     };
 
     useEffect(() => {
-        setDate(Date.now() + timerValue * 1000);
-    }, [timerValue]);
+        setDate(Date.now() + timerInSeconds * 1000);
+    }, [timerInSeconds]);
 
     useEffect(() => {
         if (countdownRef.current) {
@@ -76,11 +76,11 @@ const HomePage = () => {
     }, [date]);
 
     const handleIncreaseTime = () => {
-        setTimerValue(timerValue + 300);
+        setTimerValue(timerValue + 5);
     }
 
     const handleDecreaseTime = () => {
-        setTimerValue(timerValue - 300);
+        setTimerValue(timerValue - 5);
     }
 
     const handleStartClick = () => {
