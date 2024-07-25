@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import Lottie from 'lottie-react';
 import plant01 from '../assets/AnimatedPlants/plant01-animation.json';
 import plant02 from '../assets/AnimatedPlants/plant02-animation.json';
@@ -5,13 +6,13 @@ import plant04 from '../assets/AnimatedPlants/plant04-animation.json';
 import plant06 from '../assets/AnimatedPlants/plant06-animation.json';
 import plant07 from '../assets/AnimatedPlants/plant07-animation.json';
 import plant09 from '../assets/AnimatedPlants/plant09-animation.json';
-import { useState } from 'react';
-
 
 const TaskConfiguration = () => {
 
     const [timerPlaceholder, setTimerPlaceholder] = useState(40)
-    let selectedAudio = {
+    const [currentAudio, setCurrentAudio] = useState('')
+
+    const defaultAudio = {
         id: 'musicLoFi',
         name: 'musicLoFi',
         value: 'musicLoFi',
@@ -21,33 +22,23 @@ const TaskConfiguration = () => {
     }
 
     const plants = [
-        {
-            plant: plant01,
-            speed: 0.25
-        },
-        {
-            plant: plant02,
-            speed: 0.25
-        },
-        {
-            plant: plant06,
-            speed: 1
-        },
-        {
-            plant: plant04,
-            speed: 0.25
-        },
-        {
-            plant: plant07,
-            speed: 0.25
-        },
-        {
-            plant: plant09,
-            speed: 1
-        }
+        { plant: plant01, speed: 0.25 },
+        { plant: plant02, speed: 0.25 },
+        { plant: plant06, speed: 1 },
+        { plant: plant04, speed: 0.25 },
+        { plant: plant07, speed: 0.25 },
+        { plant: plant09, speed: 1 }
     ]
 
     const nombresDeTareas = ['Estudio', 'Limpieza', 'Trabajo']
+
+    useEffect(() => {
+        currentAudio /* THE selectedAudio VALUE FROM AudioSelector.jsx */
+        ? setCurrentAudio(currentAudio /* THE selectedAudio VALUE FROM AudioSelector.jsx */)
+        : setCurrentAudio(defaultAudio)
+        console.log(currentAudio)
+    }, [])
+
 
     const handleIncreaseTime = () => {
         setTimerPlaceholder(timerPlaceholder + 5);
@@ -95,7 +86,7 @@ const TaskConfiguration = () => {
                                                         checked:before:rounded-full
                                                         checked:before:bg-no-repeat
                                                         checked:before:bg-center'
-                                                        defaultChecked={plant.plant == plant01}
+                                                    defaultChecked={plant.plant == plant01}
                                                 />
                                             </label>
                                         </>
@@ -153,7 +144,7 @@ const TaskConfiguration = () => {
                             <a href="" className='block w-2/3 mx-auto'>
                                 <button type="button" className='flex items-center justify-center gap-2 w-full bg-celeste rounded-full shadow-lg p-2'>
                                     <svg className='w-4 fill-azul' xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M400-120q-66 0-113-47t-47-113q0-66 47-113t113-47q23 0 42.5 5.5T480-418v-422h240v160H560v400q0 66-47 113t-113 47Z" /></svg>
-                                    <span className='text-azul font-semibold uppercase'>{selectedAudio.label}</span>
+                                    <span className='text-azul font-semibold uppercase'>{currentAudio.label}</span>
                                 </button>
                             </a>
                         </div>
@@ -165,9 +156,7 @@ const TaskConfiguration = () => {
                             </button>
                         </a>
                     </div>
-
                 </form>
-
             </div>
         </>
     )

@@ -1,11 +1,19 @@
 import { useEffect, useRef, useState } from "react";
 
 const AudioSelector = () => {
-
+    
     const audioRef = useRef(null);
-    const [selectedAudio, setSelectedAudio] = useState('');
-
+    const [selectedAudio, setSelectedAudio] = useState(null);
+    const [selectedSource, setSelectedSource] = useState('');
+    
     const audios = [
+        {
+            id: 'noSound',
+            name: 'noSound',
+            value: 'noSound',
+            label: 'Sin música',
+            source: ''
+        },
         {
             id: 'musicLoFi',
             name: 'musicLoFi',
@@ -33,8 +41,8 @@ const AudioSelector = () => {
             name: 'rainSound',
             value: 'rainSound',
             label: 'Sonido de lluvia',
-            // source: 'https://cdn.pixabay.com/download/audio/2024/05/21/audio_08ef8717b4.mp3'
-            source: ''
+            source: 'https://cdn.pixabay.com/download/audio/2024/05/21/audio_08ef8717b4.mp3'
+            // source: ''
         },
         {
             id: 'waveSound',
@@ -43,28 +51,23 @@ const AudioSelector = () => {
             label: 'Sonido de olas',
             source: ''
         },
-        {
-            id: 'noSound',
-            name: 'noSound',
-            value: 'noSound',
-            label: 'Sin música',
-            source: ''
-        },
     ]
 
     useEffect(() => {
         const audioElement = audioRef.current;
-        if (audioElement && selectedAudio) {
-            audioElement.src = selectedAudio;
+        if (audioElement && selectedSource) {
+            audioElement.src = selectedSource;
             audioElement.play().catch(error => {
                 console.error("Error playing audio:", error);
             });
         }
-    }, [selectedAudio]);
+    }, [selectedSource]);
 
     const handleAudioChange = (event) => {
-        const selectedSource = audios.find(audio => audio.value === event.target.value)?.source;
-        setSelectedAudio(selectedSource);
+        setSelectedAudio(audios.find(audio => audio.value === event.target.value));
+        console.log(selectedAudio)
+        const selectedAudioSource = audios.find(audio => audio.value === event.target.value)?.source;
+        setSelectedSource(selectedAudioSource);
     };
 
     return (
@@ -78,10 +81,10 @@ const AudioSelector = () => {
                                 htmlFor={audio.id}
                             >
                                 <span className="flex items-center text-lg">
-                                    {index !== audios.length - 1 && (
+                                    {index !== 0 && (
                                         <svg className="h-6 pr-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M400-120q-66 0-113-47t-47-113q0-66 47-113t113-47q23 0 42.5 5.5T480-418v-422h240v160H560v400q0 66-47 113t-113 47Z" /></svg>
                                     )}
-                                    {index === audios.length - 1 && (
+                                    {index === 0 && (
                                         <svg className="h-6 pr-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M792-56 56-792l56-56 736 736-56 56ZM560-514l-80-80v-246h240v160H560v166ZM400-120q-66 0-113-47t-47-113q0-66 47-113t113-47q23 0 42.5 5.5T480-418v-62l80 80v120q0 66-47 113t-113 47Z"/></svg>
                                     )}
                                     {audio.label}
