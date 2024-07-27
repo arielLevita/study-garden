@@ -17,8 +17,8 @@ function App() {
 
         <div className='grow'>
             {/* <TaskConfiguration /> */}
-            <AudioPage />
-            {/* <HomePage /> */}
+            {/* <AudioPage /> */}
+            <HomePage />
         </div>
 
         <div>
