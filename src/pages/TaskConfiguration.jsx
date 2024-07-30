@@ -26,8 +26,13 @@ const TaskConfiguration = () => {
             { plant: plant07, name: plant07.nm, speed: 0.25 },
             { plant: plant09, name: plant09.nm, speed: 1 }
         ])
+        
         setTaskTitles(tasks.otherTasks.map(task => task.title).splice(0, 2).concat(tasks.currentTask.title))
     }, [])
+
+    useEffect(() => {
+        console.log()
+    })
 
     const handleIncreaseTime = () => {
         setTimerPlaceholder(timerPlaceholder + 5);
@@ -41,6 +46,7 @@ const TaskConfiguration = () => {
         event.preventDefault();
         const formData = new FormData(event.target);
         const updatedCurrentTask = {
+            id: Date.now(),
             title: formData.get('title'),
             plant: plants.find((plant) => plant.name === formData.get('plant')),
             timer: timerPlaceholder
@@ -51,6 +57,13 @@ const TaskConfiguration = () => {
             ...tasks.currentTask,
             ...updatedCurrentTask,
         };
+        // const updatedOtherTasks = tasks.otherTasks.push(tasks.currentTask)
+        tasks.otherTasks = [
+            ...tasks.otherTasks,
+            {
+                ...tasks.currentTask,
+                id: tasks.currentTask.id 
+        }]
         localStorage.setItem('tasks', JSON.stringify(tasks));
         setCurrentTask(tasks.currentTask);
     };

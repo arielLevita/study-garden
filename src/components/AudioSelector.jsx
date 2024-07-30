@@ -6,7 +6,7 @@ const AudioSelector = () => {
     const [selectedAudio, setSelectedAudio] = useState(null);
     const [selectedSource, setSelectedSource] = useState('');
     
-    const audios = [
+    const audios =[
         {
             id: 'noSound',
             name: 'noSound',
@@ -19,22 +19,21 @@ const AudioSelector = () => {
             name: 'musicLoFi',
             value: 'musicLoFi',
             label: 'Música Lo-Fi',
-            // source: 'https://cdn.pixabay.com/audio/2024/01/15/audio_9914e58808.mp3'
-            source: ''
+            source: 'https://cdn.pixabay.com/audio/2024/01/15/audio_9914e58808.mp3'
         },
         {
             id: 'pianoMelody',
             name: 'pianoMelody',
             value: 'pianoMelody',
             label: 'Melodía de piano',
-            source: ''
+            source: 'https://cdn.pixabay.com/download/audio/2024/04/12/audio_85e1122b59.mp3'
         },
         {
             id: 'guitarMelody',
             name: 'guitarMelody',
             value: 'guitarMelody',
             label: 'Melodía de guitarra',
-            source: ''
+            source: 'https://cdn.pixabay.com/download/audio/2023/06/19/audio_871c28dde0.mp3'
         },
         {
             id: 'rainSound',
@@ -42,17 +41,30 @@ const AudioSelector = () => {
             value: 'rainSound',
             label: 'Sonido de lluvia',
             source: 'https://cdn.pixabay.com/download/audio/2024/05/21/audio_08ef8717b4.mp3'
-            // source: ''
         },
         {
             id: 'waveSound',
             name: 'waveSound',
             value: 'waveSound',
             label: 'Sonido de olas',
-            source: ''
+            source: 'https://cdn.pixabay.com/download/audio/2021/08/09/audio_165a149ae7.mp3'
         },
     ]
-
+    
+    useEffect(() => {
+        const tasks = JSON.parse(localStorage.getItem('tasks'))
+        setSelectedAudio(tasks.currentTask.audio);
+    },[])
+    
+    useEffect(() => {
+        const tasks = JSON.parse(localStorage.getItem('tasks'));
+        tasks.currentTask.audio = {
+            ...tasks.currentTask.audio,
+            ...selectedAudio,
+        };
+        localStorage.setItem('tasks', JSON.stringify(tasks));
+    },[selectedAudio])
+    
     useEffect(() => {
         const audioElement = audioRef.current;
         if (audioElement && selectedSource) {
@@ -65,7 +77,6 @@ const AudioSelector = () => {
 
     const handleAudioChange = (event) => {
         setSelectedAudio(audios.find(audio => audio.value === event.target.value));
-        console.log(selectedAudio)
         const selectedAudioSource = audios.find(audio => audio.value === event.target.value)?.source;
         setSelectedSource(selectedAudioSource);
     };
@@ -112,7 +123,7 @@ const AudioSelector = () => {
                                     id={audio.id}
                                     value={audio.value}
                                     onChange={handleAudioChange}
-                                    defaultChecked={index === 0}
+                                    defaultChecked={index == 0}
                                 />
                             </label>
                         </div>
