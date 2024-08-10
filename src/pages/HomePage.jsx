@@ -15,6 +15,8 @@ import plant09 from '../assets/AnimatedPlants/plant09-animation.json';
 
 const HomePage = () => {
 
+    const sectionTitle = 'Inicio';
+
     const defaultTask = {
         title: 'Estudiando',
         description: '',
@@ -70,7 +72,7 @@ const HomePage = () => {
                     },
                     {
                         id: 2,
-                        title: 'Estudiando',
+                        title: 'Trabajando',
                         description: '',
                         plant: { plant: plant04, name: plant04.nm, speed: 0.25 },
                         timer: 35,
@@ -186,8 +188,8 @@ const HomePage = () => {
     }; */
 
     return (
-        <>
-            <div className="relative overflow-hidden flex flex-col h-full p-4">
+        <section id={sectionTitle} className='h-full'>
+            <div className="relative overflow-hidden flex flex-col p-4 h-full">
                 <div className="absolute top-1/2 -right-1/2 -left-1/2 mx-auto w-[150%] h-screen rounded-full bg-celeste -z-10"></div>
                 <div className="flex flex-row justify-between">
                     <a href="">
@@ -244,7 +246,6 @@ const HomePage = () => {
                     </button>
                 </div>
 
-
                 <div className='[flex-grow:2] flex justify-center items-center mb-8'>
                     {
                         taskRunning
@@ -274,7 +275,7 @@ const HomePage = () => {
                 crossOrigin="anonymous"
                 loop
             />
-        </>
+        </section>
     )
 }
 

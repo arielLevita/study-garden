@@ -51,7 +51,7 @@ const Navbar = () => {
                 }
             </ul>
 
-            <div className="absolute inset-x-0 -top-8 m-auto w-[15%] aspect-square">
+            <div className="absolute inset-x-0 -top-4 m-auto w-[15%] aspect-square">
                 <a href="/" className="block bg-naranja w-full h-full rounded-full">
                     <button className="flex flex-col justify-center items-center w-full h-full rounded-full ring-claro ring-4">
                         <div className="w-1 h-1/6 bg-naranja"></div>
