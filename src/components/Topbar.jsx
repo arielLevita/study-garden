@@ -1,10 +1,11 @@
+import GoBackButton from "./GoBackButton"
 
 
 const Topbar = () => {
     return (
-        <div className='h-20 w-full bg-azul'>
-            <div>
-
+        <div className=' flex items-centerh-20 w-full bg-azul'>
+            <div className="p-2">
+                <GoBackButton />
             </div>
         </div>
     )

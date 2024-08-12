@@ -1,3 +1,4 @@
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import AudioSelector from './AudioSelector';
 import TaskConfiguration from '../pages/TaskConfiguration';
@@ -17,6 +18,7 @@ const NewTaskFormHandler = () => {
     const [currentTitle, setCurrentTitle] = useState('');
     const [currentPlant, setCurrentPlant] = useState(null);
     const [currentDescription, setCurrentDescription] = useState('');
+    const navigate = useNavigate();
 
     const audios = [
         {
@@ -120,37 +122,70 @@ const NewTaskFormHandler = () => {
             }]
         localStorage.setItem('tasks', JSON.stringify(tasks));
         setCurrentTask({ ...currentTask, ...updatedCurrentTask });
+        navigate('/');
     };
 
     return (
         <>
             <div className='h-full w-full overflow-y-auto bg-celeste'>
-                <TaskDescriptionPage
-                    currentTitle={currentTitle}
-                    currentDescription={currentDescription}
-                    handleTitleChange={handleTitleChange}
-                    handleDescriptionChange={handleDescriptionChange}
-                />
-                <AudioSelector
-                    audios={audios}
-                    selectedAudio={selectedAudio}
-                    handleAudioChange={handleAudioChange}
-                />
-                <TaskConfiguration
-                    plants={plants}
-                    // taskTitles={taskTitles}
-                    currentTask={currentTask}
-                    currentPlant={currentPlant}
-                    currentTitle={currentTitle}
-                    currentDescription={currentDescription}
-                    currentTimer={currentTimer}
-                    selectedAudio={selectedAudio}
-                    handlePlantChange={handlePlantChange}
-                    handleIncreaseTime={handleIncreaseTime}
-                    handleDecreaseTime={handleDecreaseTime}
-                    handleTitleChange={handleTitleChange}
-                    onSubmit={onSubmit}
-                />
+                <Routes>
+                    <Route path={'/taskconfiguration'} element={
+                        <TaskConfiguration
+                            plants={plants}
+                            currentTask={currentTask}
+                            currentPlant={currentPlant}
+                            currentTitle={currentTitle}
+                            currentDescription={currentDescription}
+                            currentTimer={currentTimer}
+                            selectedAudio={selectedAudio}
+                            handlePlantChange={handlePlantChange}
+                            handleIncreaseTime={handleIncreaseTime}
+                            handleDecreaseTime={handleDecreaseTime}
+                            handleTitleChange={handleTitleChange}
+                            onSubmit={onSubmit}
+                        />
+                    } />
+                    <Route path={'/audioselector'} element={
+                        <AudioSelector
+                        audios={audios}
+                        selectedAudio={selectedAudio}
+                        handleAudioChange={handleAudioChange}
+                    />
+                    } />
+                    <Route path={'/taskdescription'} element={
+                        <TaskDescriptionPage
+                        currentTitle={currentTitle}
+                        currentDescription={currentDescription}
+                        handleTitleChange={handleTitleChange}
+                        handleDescriptionChange={handleDescriptionChange}
+                    />
+                    } />
+                    {/* <TaskDescriptionPage
+                        currentTitle={currentTitle}
+                        currentDescription={currentDescription}
+                        handleTitleChange={handleTitleChange}
+                        handleDescriptionChange={handleDescriptionChange}
+                    /> */}
+                    {/* <AudioSelector
+                        audios={audios}
+                        selectedAudio={selectedAudio}
+                        handleAudioChange={handleAudioChange}
+                    /> */}
+                    {/* <TaskConfiguration
+                        plants={plants}
+                        currentTask={currentTask}
+                        currentPlant={currentPlant}
+                        currentTitle={currentTitle}
+                        currentDescription={currentDescription}
+                        currentTimer={currentTimer}
+                        selectedAudio={selectedAudio}
+                        handlePlantChange={handlePlantChange}
+                        handleIncreaseTime={handleIncreaseTime}
+                        handleDecreaseTime={handleDecreaseTime}
+                        handleTitleChange={handleTitleChange}
+                        onSubmit={onSubmit}
+                    /> */}
+                </Routes>
             </div>
         </>
     )

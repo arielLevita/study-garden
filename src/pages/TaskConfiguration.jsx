@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import Lottie from 'lottie-react';
 
@@ -49,6 +50,9 @@ const TaskConfiguration = ({
                     <div className='rounded-3xl shadow-lg bg-white *:border-b *:border-celeste p-2'>
                         <div className="last:border-none p-2">
                             <h3 className='text-azul text-center text-xl font-semibold mb-2'>Planta a dar vida</h3>
+
+                            {/* TODO CAMBIAR EL BEFORE POR UN DIV CON EL SVG COMO EN LOS TITLES */}
+
                             <div className='grid grid-cols-3 gap-4'>
                                 {
                                     plants?.map((plant, index) => (
@@ -72,12 +76,16 @@ const TaskConfiguration = ({
                                                         top-2
                                                         right-0
                                                         [appearance:none]
+                                                        checked:before:absolute
+                                                        checked:before:top-0
+                                                        checked:before:right-0
                                                         checked:before:block
                                                         checked:before:[content:""]
                                                         checked:before:w-6 
                                                         checked:before:aspect-square
                                                         checked:before:bg-azul
-                                                        checked:before:bg-[url("check_white.svg")]
+                                                        checked:before:bg-[url("./check_white.svg")]
+                                                        checked:before:z-10
                                                         checked:before:rounded-full
                                                         checked:before:bg-no-repeat
                                                         checked:before:bg-center'
@@ -102,7 +110,7 @@ const TaskConfiguration = ({
                                                 htmlFor={title}
                                             >
                                                 <div className='hidden group-has-[:checked]:block  bg-azul rounded-full mr-2'>
-                                                    <svg className='w-6 fill-white' xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z" /></svg>
+                                                    <svg className='w-6 aspect-square fill-white z-10' xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z" /></svg>
                                                 </div>
                                                 <div className='text-white text-center text-xs group-has-[:checked]:text-azul'>{title}</div>
                                                 <input
@@ -118,12 +126,12 @@ const TaskConfiguration = ({
                                     ))
                                 }
                             </div>
-                            <a href="" className='block w-2/3 mx-auto'>
+                            <Link to="/newtask/taskdescription" className='block w-2/3 mx-auto'>
                                 <button type="button" className='flex items-center justify-center gap-2 w-full bg-celeste rounded-full shadow-md p-2'>
                                     <svg className='w-4 fill-azul' xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z" /></svg>
                                     <span className='text-azul font-semibold uppercase'>nueva tarea</span>
                                 </button>
-                            </a>
+                            </Link>
                         </div>
                         <div className='last:border-none p-2'>
                             <h3 className='text-azul text-center text-xl font-semibold mb-2'>Duración de la tarea</h3>
@@ -139,17 +147,17 @@ const TaskConfiguration = ({
                         </div>
                         <div className='last:border-none p-2'>
                             <h3 className='text-azul text-center text-xl font-semibold mb-2'>Música de ambiente</h3>
-                            <a href="" className='block w-2/3 mx-auto'>
+                            <Link to="/newtask/audioselector" className='block w-2/3 mx-auto'>
                                 <button type="button" className='flex items-center justify-center gap-2 w-full bg-celeste rounded-full shadow-lg p-2'>
                                     <svg className='w-4 fill-azul' xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M400-120q-66 0-113-47t-47-113q0-66 47-113t113-47q23 0 42.5 5.5T480-418v-422h240v160H560v400q0 66-47 113t-113 47Z" /></svg>
                                     <span className='text-azul font-semibold uppercase'>{selectedAudio?.label}</span>
                                 </button>
-                            </a>
+                            </Link>
                         </div>
                     </div>
                     <div className='p-4'>
                         <div className='block w-9/10 mx-auto'> {/* cambiar a link */}
-                            <button type='submit' formTarget='_blank' className='text-center w-full bg-naranja rounded-full drop-shadow-[0_3px_3px_rgba(0,0,0,0.25)] p-4'>
+                            <button type='submit' className='text-center w-full bg-naranja rounded-full drop-shadow-[0_3px_3px_rgba(0,0,0,0.25)] p-4'>
                                 <span className='text-black text-lg font-semibold uppercase'>guardar configuración</span>
                             </button>
                         </div>
