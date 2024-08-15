@@ -1,13 +1,9 @@
+/* eslint-disable react/prop-types */
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import AudioSelector from './AudioSelector';
+import { LOCAL_STORAGE_KEY } from "../App";
+import AudioSelector from '../pages/AudioSelector';
 import TaskConfiguration from '../pages/TaskConfiguration';
-import plant01 from '../assets/AnimatedPlants/plant01-animation.json';
-import plant02 from '../assets/AnimatedPlants/plant02-animation.json';
-import plant04 from '../assets/AnimatedPlants/plant04-animation.json';
-import plant06 from '../assets/AnimatedPlants/plant06-animation.json';
-import plant07 from '../assets/AnimatedPlants/plant07-animation.json';
-import plant09 from '../assets/AnimatedPlants/plant09-animation.json';
 import TaskDescriptionPage from '../pages/TaskDescriptionPage';
 
 const NewTaskFormHandler = () => {
@@ -16,7 +12,7 @@ const NewTaskFormHandler = () => {
     const [currentTask, setCurrentTask] = useState(null)
     const [currentTimer, setCurrentTimer] = useState(0);
     const [currentTitle, setCurrentTitle] = useState('');
-    const [currentPlant, setCurrentPlant] = useState(null);
+    let currentPlant = null;
     const [currentDescription, setCurrentDescription] = useState('');
     const navigate = useNavigate();
 
@@ -65,35 +61,17 @@ const NewTaskFormHandler = () => {
         },
     ]
 
-    const plants = [
-        { plant: plant01, name: plant01.nm, speed: 0.25 },
-        { plant: plant02, name: plant02.nm, speed: 0.25 },
-        { plant: plant06, name: plant06.nm, speed: 1 },
-        { plant: plant04, name: plant04.nm, speed: 0.25 },
-        { plant: plant07, name: plant07.nm, speed: 0.25 },
-        { plant: plant09, name: plant09.nm, speed: 1 }
-    ]
-
     useEffect(() => {
-        const tasks = JSON.parse(localStorage.getItem('tasks'))
+        const tasks = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY))
         setCurrentTask(tasks.currentTask)
         setSelectedAudio(tasks.currentTask.audio);
-        setCurrentPlant(tasks.currentTask.plant)
-        setCurrentTimer(tasks.currentTask.timer)
-        setCurrentTitle(tasks.currentTask.title)
-        setCurrentDescription(tasks.currentTask.description)
+        setCurrentTimer(tasks.currentTask.timer);
+        setCurrentTitle(tasks.currentTask.title);
+        setCurrentDescription(tasks.currentTask.description);
     }, [])
 
-    const handlePlantChange = (event) => {
-        setCurrentPlant(plants.find((plant) => plant.name === event.target.value));
-    };
-
-    const handleIncreaseTime = () => {
-        setCurrentTimer(currentTimer + 5);
-    }
-
-    const handleDecreaseTime = () => {
-        setCurrentTimer(currentTimer - 5);
+    const adjustTimerAmount = (minutes) => {
+        setCurrentTimer(currentTimer + minutes);
     }
 
     const handleTitleChange = (event) => {
@@ -109,7 +87,7 @@ const NewTaskFormHandler = () => {
     }
 
     const onSubmit = (updatedCurrentTask) => {
-        const tasks = JSON.parse(localStorage.getItem('tasks'));
+        const tasks = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
         tasks.currentTask = {
             ...tasks.currentTask,
             ...updatedCurrentTask,
@@ -120,7 +98,7 @@ const NewTaskFormHandler = () => {
                 ...tasks.currentTask,
                 id: tasks.currentTask.id
             }]
-        localStorage.setItem('tasks', JSON.stringify(tasks));
+        localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(tasks));
         setCurrentTask({ ...currentTask, ...updatedCurrentTask });
         navigate('/');
     };
@@ -129,30 +107,27 @@ const NewTaskFormHandler = () => {
         <>
             <div className='h-full w-full overflow-y-auto bg-celeste'>
                 <Routes>
-                    <Route path={'/taskconfiguration'} element={
+                    <Route path={'taskconfiguration'} element={
                         <TaskConfiguration
-                            plants={plants}
                             currentTask={currentTask}
                             currentPlant={currentPlant}
                             currentTitle={currentTitle}
                             currentDescription={currentDescription}
                             currentTimer={currentTimer}
                             selectedAudio={selectedAudio}
-                            handlePlantChange={handlePlantChange}
-                            handleIncreaseTime={handleIncreaseTime}
-                            handleDecreaseTime={handleDecreaseTime}
+                            adjustTimerAmount={adjustTimerAmount}
                             handleTitleChange={handleTitleChange}
                             onSubmit={onSubmit}
                         />
                     } />
-                    <Route path={'/audioselector'} element={
+                    <Route path={'audioselector'} element={
                         <AudioSelector
                         audios={audios}
                         selectedAudio={selectedAudio}
                         handleAudioChange={handleAudioChange}
                     />
                     } />
-                    <Route path={'/taskdescription'} element={
+                    <Route path={'taskdescription'} element={
                         <TaskDescriptionPage
                         currentTitle={currentTitle}
                         currentDescription={currentDescription}
@@ -160,31 +135,6 @@ const NewTaskFormHandler = () => {
                         handleDescriptionChange={handleDescriptionChange}
                     />
                     } />
-                    {/* <TaskDescriptionPage
-                        currentTitle={currentTitle}
-                        currentDescription={currentDescription}
-                        handleTitleChange={handleTitleChange}
-                        handleDescriptionChange={handleDescriptionChange}
-                    /> */}
-                    {/* <AudioSelector
-                        audios={audios}
-                        selectedAudio={selectedAudio}
-                        handleAudioChange={handleAudioChange}
-                    /> */}
-                    {/* <TaskConfiguration
-                        plants={plants}
-                        currentTask={currentTask}
-                        currentPlant={currentPlant}
-                        currentTitle={currentTitle}
-                        currentDescription={currentDescription}
-                        currentTimer={currentTimer}
-                        selectedAudio={selectedAudio}
-                        handlePlantChange={handlePlantChange}
-                        handleIncreaseTime={handleIncreaseTime}
-                        handleDecreaseTime={handleDecreaseTime}
-                        handleTitleChange={handleTitleChange}
-                        onSubmit={onSubmit}
-                    /> */}
                 </Routes>
             </div>
         </>

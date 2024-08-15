@@ -1,11 +1,11 @@
 import { createBrowserRouter } from "react-router-dom";
-// import HomePage from "../pages/HomePage";
 import App from "../App";
 import HomePage from "../pages/HomePage";
 import NewTaskFormHandler from "../components/NewTaskFormHandler";
 import TaskConfiguration from "../pages/TaskConfiguration";
 import TaskDescriptionPage from "../pages/TaskDescriptionPage";
-import AudioSelector from "../components/AudioSelector";
+import AudioSelector from "../pages/AudioSelector";
+import UnderConstruction from "../components/UnderConstruction";
 
 const router = createBrowserRouter([
     {
@@ -17,22 +17,26 @@ const router = createBrowserRouter([
                 element: <HomePage />
             },
             {
-                path: '/newtask',
+                path: '/newtask/*',
                 element: <NewTaskFormHandler />,
                 children: [
                     {
-                        path: '/newtask/taskconfiguration',
+                        path: 'taskconfiguration',
                         element: <TaskConfiguration />
                     },
                     {
-                        path: '/newtask/taskdescription',
+                        path: 'taskdescription',
                         element: <TaskDescriptionPage />
                     },
                     {
-                        path: '/newtask/audioselector',
+                        path: 'audioselector',
                         element: <AudioSelector />
                     },
                 ]
+            },
+            {
+                path: '/underconstruction',
+                element: <UnderConstruction />
             },
         ]
     }
