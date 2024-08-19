@@ -3,8 +3,6 @@ import { useEffect, useRef, useState } from "react";
 
 const AudioSelector = ({ audios, selectedAudio, handleAudioChange }) => {
 
-    const sectionTitle = 'Audio';
-
     const audioRef = useRef(null);
     const [selectedSource, setSelectedSource] = useState('');
 
@@ -30,7 +28,7 @@ const AudioSelector = ({ audios, selectedAudio, handleAudioChange }) => {
     }
 
     return (
-        <section id={sectionTitle} className='h-full'>
+        <section className='h-full'>
             <div className='h-full w-full bg-white'>
                 <div className='max-w-md h-full mx-auto'>
                     <div className="grid gap-4 p-4">

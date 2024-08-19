@@ -1,15 +1,13 @@
 /* eslint-disable react/prop-types */
 const TaskDescriptionPage = ({
-    currentTitle,
-    currentDescription,
+    currentTitle = "",
+    currentDescription = "",
     handleTitleChange,
     handleDescriptionChange
 }) => {
 
-    const sectionTitle = 'Nueva tarea';
-
     return (
-        <section id={sectionTitle} className="h-full">
+        <section className="h-full">
             <div className='h-full w-full bg-white p-4'>
                 <div className='max-w-md h-full mx-auto'>
                     <div className="mb-4">

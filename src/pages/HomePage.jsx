@@ -18,9 +18,8 @@ import plant09 from '../assets/AnimatedPlants/plant09-animation.json';
 
 const HomePage = () => {
 
-    const sectionTitle = 'Inicio';
-
     const defaultTask = {
+        id: 1,
         title: 'Estudiando',
         description: '',
         plant: { plant: plant01, name: plant01.nm, speed: 0.25 },
@@ -61,10 +60,10 @@ const HomePage = () => {
                 otherTasks: [
                     {
                         id: 1,
-                        title: 'Paseando',
+                        title: 'Estudiando',
                         description: '',
-                        plant: { plant: plant02, name: plant02.nm, speed: 0.25 },
-                        timer: 60,
+                        plant: { plant: plant01, name: plant01.nm, speed: 0.25 },
+                        timer: 40,
                         audio: {
                             id: 'pianoMelody',
                             name: 'pianoMelody',
@@ -171,8 +170,8 @@ const HomePage = () => {
     };
 
     return (
-        <section id={sectionTitle} className='h-full'>
-            <div className="relative overflow-hidden flex p-4 h-full">
+        <section className='h-full'>
+            <div className="relative overflow-hidden p-4 h-full">
                 <div className="absolute top-1/2 -right-1/2 -left-1/2 mx-auto w-[150%] h-screen rounded-full bg-celeste -z-10"></div>
                 <div className='flex flex-col max-w-md h-full mx-auto'>
                     <div className="flex flex-row justify-between">

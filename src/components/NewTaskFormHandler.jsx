@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
-import { Routes, Route, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import { LOCAL_STORAGE_KEY } from "../App";
 import AudioSelector from '../pages/AudioSelector';
 import TaskConfiguration from '../pages/TaskConfiguration';
@@ -11,9 +11,9 @@ const NewTaskFormHandler = () => {
     const [selectedAudio, setSelectedAudio] = useState(null);
     const [currentTask, setCurrentTask] = useState(null)
     const [currentTimer, setCurrentTimer] = useState(0);
-    const [currentTitle, setCurrentTitle] = useState('');
+    const [currentTitle, setCurrentTitle] = useState("");
     let currentPlant = null;
-    const [currentDescription, setCurrentDescription] = useState('');
+    const [currentDescription, setCurrentDescription] = useState("");
     const navigate = useNavigate();
 
     const audios = [

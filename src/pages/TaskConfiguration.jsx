@@ -20,7 +20,6 @@ const TaskConfiguration = ({
     onSubmit
 }) => {
 
-    const sectionTitle = 'Diseño';
     const [taskTitles, setTaskTitles] = useState([])
     const tasks = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY))
     const currentPlant = tasks.currentTask.plant;
@@ -57,7 +56,7 @@ const TaskConfiguration = ({
     } */
 
     return (
-        <section id={sectionTitle} className='h-full'>
+        <section className='h-full'>
             <div className='w-full bg-celeste'>
                 <div className='max-w-md h-full mx-auto'>
                     <form onSubmit={handleSubmit} className='p-3'>

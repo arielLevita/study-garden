@@ -6,6 +6,7 @@ import TaskConfiguration from "../pages/TaskConfiguration";
 import TaskDescriptionPage from "../pages/TaskDescriptionPage";
 import AudioSelector from "../pages/AudioSelector";
 import UnderConstruction from "../components/UnderConstruction";
+import SavedTasks from "../pages/SavedTasks";
 
 const router = createBrowserRouter([
     {
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
                         element: <AudioSelector />
                     },
                 ]
+            },
+            {
+                path: '/savedtasks',
+                element: <SavedTasks />
             },
             {
                 path: '/underconstruction',

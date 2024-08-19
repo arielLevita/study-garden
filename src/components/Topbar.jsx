@@ -19,6 +19,9 @@ const Topbar = () => {
             case '/newtask/audioselector':
                 setCurrentPath('Audio');
                 break;
+            case '/savedtasks':
+                setCurrentPath('Guardado');
+                break;
             case '/underconstruction':
                 setCurrentPath('En construcción');
                 break;

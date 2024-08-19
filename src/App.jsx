@@ -9,15 +9,15 @@ function App() {
   return (
     <>
       <div className='flex flex-col h-screen mx-auto overflow-x-hidden border border-black'>
-        <div className='grow-0'>
+        <div className='w-screen grow-0 z-50'>
           <Topbar />
         </div>
 
-        <div className='grow'>
+        <div className='h-[calc(100vh-152px)] overflow-y-scroll'>
           <Outlet />
         </div>
 
-        <div className='grow-0'>
+        <div className='w-screen grow-0 z-50'>
           <Navbar />
         </div>
       </div>
