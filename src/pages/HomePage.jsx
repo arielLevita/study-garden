@@ -15,6 +15,7 @@ import plant06 from '../assets/AnimatedPlants/plant06-animation.json';
 import plant07 from '../assets/AnimatedPlants/plant07-animation.json';
 // eslint-disable-next-line no-unused-vars
 import plant09 from '../assets/AnimatedPlants/plant09-animation.json';
+import UsageLog from '../components/UsageLog';
 
 const HomePage = () => {
 
@@ -49,10 +50,10 @@ const HomePage = () => {
     const [taskRunning, setTaskRunning] = useState(false);
 
     useEffect(() => {
-        const storedTasks = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
-        if (storedTasks) {
-            setCurrentTask(storedTasks.currentTask);
-            setTimerValue(storedTasks.currentTask.timer);
+        const tasks = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
+        if (tasks) {
+            setCurrentTask(tasks.currentTask);
+            setTimerValue(tasks.currentTask.timer);
         } else {
             setCurrentTask(defaultTask);
             const newTasks = {
@@ -100,7 +101,8 @@ const HomePage = () => {
                             source: 'https://cdn.pixabay.com/audio/2024/01/15/audio_9914e58808.mp3'
                         },
                     },
-                ]
+                ],
+                records: []
             };
             localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(newTasks));
             setTimerValue(defaultTask.timer);
@@ -256,6 +258,8 @@ const HomePage = () => {
                 crossOrigin="anonymous"
                 loop
             />
+
+            <UsageLog isRunning={taskRunning} />
         </section>
     )
 }
