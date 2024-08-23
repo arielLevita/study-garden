@@ -25,7 +25,7 @@ const UsageLog = ({ isRunning }) => {
         if (!isRunning) {
             const now = new Date();
             const today = now.toISOString().split('T')[0];
-            const minutesElapsed = Math.floor(elapsedTime / 1000);
+            const minutesElapsed = Math.floor(elapsedTime / 60000);
 
             setRecords((prevRecords) => {
                 const existingRecord = prevRecords.find(record => record.date === today);

@@ -22,6 +22,9 @@ const Topbar = () => {
             case '/savedtasks':
                 setCurrentPath('Guardado');
                 break;
+            case '/statspage':
+                setCurrentPath('Estadísticas');
+                break;
             case '/underconstruction':
                 setCurrentPath('En construcción');
                 break;
