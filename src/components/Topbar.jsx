@@ -22,6 +22,9 @@ const Topbar = () => {
             case '/savedtasks':
                 setCurrentPath('Guardado');
                 break;
+            case '/taskslist':
+                setCurrentPath('Lista de tareas');
+                break;
             case '/statspage':
                 setCurrentPath('Estadísticas');
                 break;

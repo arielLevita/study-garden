@@ -12,7 +12,16 @@ export default {
         azul: '#1a3551',
         naranja: '#f28705',
         claro: '#f3f4f6'
-      }
+      },
+      keyframes: {
+        fadeIn: {
+          "0%": { opacity: 0 },
+          "100%": { opacity: 100 },
+        },
+      },
+      animation: {
+        fadeIn: "fadeIn 0.2s ease-in-out forwards",
+      },
     },
   },
   plugins: [],

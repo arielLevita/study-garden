@@ -5,9 +5,13 @@ import { LOCAL_STORAGE_KEY } from '../App';
 const UsageLog = ({ isRunning }) => {
     const [startTime, setStartTime] = useState(null);
     const [elapsedTime, setElapsedTime] = useState(0);
-    const tasks = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
-    const initialRecords = tasks.records;
-    const [records, setRecords] = useState(initialRecords);
+    const [records, setRecords] = useState([]);
+    
+    useEffect(() => {
+        const tasks = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
+        const initialRecords = tasks.records;
+        setRecords(initialRecords)
+    },[])
 
     useEffect(() => {
         let timer;

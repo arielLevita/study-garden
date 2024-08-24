@@ -62,7 +62,7 @@ const HomePage = () => {
                     {
                         id: 1,
                         title: 'Estudiando',
-                        description: '',
+                        description: 'Esta tarea exite por defecto. Puede ser eliminada en la página de tareas guardadas.',
                         plant: { plant: plant01, name: plant01.nm, speed: 0.25 },
                         timer: 40,
                         audio: {
@@ -76,7 +76,7 @@ const HomePage = () => {
                     {
                         id: 2,
                         title: 'Trabajando',
-                        description: '',
+                        description: 'Esta tarea exite por defecto. Puede ser eliminada en la página de tareas guardadas.',
                         plant: { plant: plant04, name: plant04.nm, speed: 0.25 },
                         timer: 35,
                         audio: {
@@ -90,7 +90,7 @@ const HomePage = () => {
                     {
                         id: 3,
                         title: 'Limpiando',
-                        description: '',
+                        description: 'Esta tarea exite por defecto. Puede ser eliminada en la página de tareas guardadas.',
                         plant: { plant: plant01, name: plant01.nm, speed: 0.25 },
                         timer: 25,
                         audio: {

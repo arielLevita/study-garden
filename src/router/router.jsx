@@ -8,6 +8,7 @@ import AudioSelector from "../pages/AudioSelector";
 import UnderConstruction from "../components/UnderConstruction";
 import SavedTasks from "../pages/SavedTasks";
 import StatsPage from "../pages/StatsPage";
+import TasksListPage from "../pages/TasksListPage";
 // import UsageLog from "../components/UsageLog";
 
 const router = createBrowserRouter([
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
             {
                 path: '/savedtasks',
                 element: <SavedTasks />
+            },
+            {
+                path: '/taskslist',
+                element: <TasksListPage />
             },
             {
                 path: '/statspage',
