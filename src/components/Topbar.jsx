@@ -11,7 +11,7 @@ const Topbar = () => {
     useEffect(() => {
         switch (location.pathname) {
             case '/newtask/taskconfiguration':
-                setCurrentPath('Diseño');
+                setCurrentPath('Nueva tarea');
                 break;
             case '/newtask/taskdescription':
                 setCurrentPath('Descripción');
