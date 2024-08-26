@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef } from "react"
 import { LOCAL_STORAGE_KEY } from "../App";
 import Lottie from 'lottie-react';
-import plant06 from '../assets/AnimatedPlants/plant06-animation.json';
+import plant09 from '../assets/AnimatedPlants/plant09-animation.json';
 
 const TasksListPage = () => {
 
@@ -48,7 +48,7 @@ const TasksListPage = () => {
                     <Lottie
                         className='w-36 mx-auto'
                         lottieRef={lottieRef}
-                        animationData={plant06}
+                        animationData={plant09}
                         loop={true}
                         speed={1}
                     />
