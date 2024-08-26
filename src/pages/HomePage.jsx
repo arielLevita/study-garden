@@ -47,14 +47,17 @@ const HomePage = () => {
     const [countdownApi, setCountdownApi] = useState(null);
 
     const [currentTask, setCurrentTask] = useState(null);
+    const [initialRecords, setInitialRecords] = useState([])
     const [taskRunning, setTaskRunning] = useState(false);
 
     useEffect(() => {
         const tasks = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
         if (tasks) {
             setCurrentTask(tasks.currentTask);
+            setInitialRecords(tasks.records);
             setTimerValue(tasks.currentTask.timer);
         } else {
+            const today = new Date().toISOString().split('T')[0];
             setCurrentTask(defaultTask);
             const newTasks = {
                 currentTask: defaultTask,
@@ -102,13 +105,17 @@ const HomePage = () => {
                         },
                     },
                 ],
-                records: []
+                records: [{date: today, minutes: 0}]
             };
-            localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(newTasks));
+            console.log(newTasks)
+            if (today) {
+                localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(newTasks));
+            }
             setTimerValue(defaultTask.timer);
+            setInitialRecords(newTasks.records);
         }
     }, []);
-
+    
     const playAudio = () => {
         toggleTaskRunning();
         const audioElement = audioRef.current;
@@ -259,7 +266,9 @@ const HomePage = () => {
                 loop
             />
 
-            <UsageLog isRunning={taskRunning} />
+            {initialRecords?.length > 0 && (
+                <UsageLog isRunning={taskRunning} />
+            )}
         </section>
     )
 }

@@ -5,13 +5,11 @@ import { LOCAL_STORAGE_KEY } from '../App';
 const UsageLog = ({ isRunning }) => {
     const [startTime, setStartTime] = useState(null);
     const [elapsedTime, setElapsedTime] = useState(0);
-    const [records, setRecords] = useState([]);
     
-    useEffect(() => {
-        const tasks = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
-        const initialRecords = tasks.records;
-        setRecords(initialRecords)
-    },[])
+    const tasks = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
+    const initialRecords = tasks.records;
+    const [records, setRecords] = useState(initialRecords);
+    console.log(initialRecords);
 
     useEffect(() => {
         let timer;
@@ -29,7 +27,7 @@ const UsageLog = ({ isRunning }) => {
         if (!isRunning) {
             const now = new Date();
             const today = now.toISOString().split('T')[0];
-            const minutesElapsed = Math.floor(elapsedTime / 60000);
+            const minutesElapsed = Math.floor(elapsedTime / 1000);
 
             setRecords((prevRecords) => {
                 const existingRecord = prevRecords.find(record => record.date === today);
