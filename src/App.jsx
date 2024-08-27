@@ -8,7 +8,7 @@ export const LOCAL_STORAGE_KEY = 'tasks';
 function App() {
   return (
     <>
-      <div className='flex flex-col h-screen mx-auto overflow-x-hidden border border-black'>
+      <div className='flex flex-col h-screen mx-auto overflow-x-hidden'>
         <div className='w-screen grow-0 z-50'>
           <Topbar />
         </div>
