@@ -1,21 +1,28 @@
+import { useState, useEffect } from 'react';
 import { BarChart, Bar, XAxis, ResponsiveContainer } from 'recharts';
 import { LOCAL_STORAGE_KEY } from '../App';
 
 const UsageChart = () => {
 
-    const tasks = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
-    const records = tasks.records;
+    const [chartArray, setChartArray] = useState([])
 
-    const last7Days = Array.from({ length: 7 }, (_, i) => {
-        const date = new Date();
-        date.setDate(date.getDate() - i);
-        return { date: date.toISOString().split('T')[0], minutes: 0 };
-    }).reverse();
+    useEffect(() => {
+        const tasks = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
+        const records = tasks.records;
 
-    const chartData = last7Days.map(day => {
-        const record = records.find(r => r.date === day.date);
-        return record ? record : day;
-    });
+        const last7Days = Array.from({ length: 7 }, (_, i) => {
+            const date = new Date();
+            date.setDate(date.getDate() - i);
+            return { date: date.toISOString().split('T')[0], minutes: 0 };
+        }).reverse();
+
+        const chartData = last7Days.map(day => {
+            const record = records.find(r => r.date === day.date);
+            return record ? record : day;
+        });
+
+        setChartArray(chartData)
+    }, [])
 
     function tickFormatter(inputDate) {
         var date = new Date(inputDate);
@@ -29,11 +36,11 @@ const UsageChart = () => {
         <div>
             <div className='w-full h-72 p-2'>
                 <ResponsiveContainer width="100%" height="100%">
-                    <BarChart 
-                        width={300} 
-                        height={200} 
-                        data={chartData} 
-                        barSize={'10%'} 
+                    <BarChart
+                        width={300}
+                        height={200}
+                        data={chartArray}
+                        barSize={'10%'}
                         margin={{ top: 12 }}
                     >
                         <Bar
