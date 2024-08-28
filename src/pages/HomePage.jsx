@@ -107,7 +107,6 @@ const HomePage = () => {
                 ],
                 records: [{date: today, minutes: 0}]
             };
-            console.log(newTasks)
             if (today) {
                 localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(newTasks));
             }

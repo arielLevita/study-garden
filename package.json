@@ -16,7 +16,8 @@
     "react-countdown": "^2.3.5",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.26.0",
-    "recharts": "^2.12.7"
+    "recharts": "^2.12.7",
+    "sweetalert2": "^11.12.4"
   },
   "devDependencies": {
     "@types/react": "^18.2.66",
