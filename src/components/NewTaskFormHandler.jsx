@@ -100,7 +100,7 @@ const NewTaskFormHandler = () => {
             }]
         localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(tasks));
         setCurrentTask({ ...currentTask, ...updatedCurrentTask });
-        navigate('/');
+        setTimeout(() => {navigate('/')}, 500);
     };
 
     return (

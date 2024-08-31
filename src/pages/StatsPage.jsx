@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import UsageChart from "../components/UsageChart"
+import AnimatedPage from '../components/AnimatedPage';
 
 const StatsPage = () => {
 
@@ -58,23 +59,25 @@ const StatsPage = () => {
     }, []);
 
     return (
-        <section className='h-full'>
-            <div className='h-full w-full bg-celeste'>
-                <div className='max-w-md flex flex-col justify-between h-full mx-auto p-4'>
-                    <div className='flex justify-center items-center h-72 w-3/4 mx-auto'>
-                        <blockquote>
-                            <p className='italic text-xl my-2'>&#34;{quote.quote}&#34;</p>
-                            <footer className='font-semibold text-xl text-right my-2'>- {quote.author}</footer>
-                        </blockquote>
-                    </div>
-                    <div>
-                        <button className='rounded-full shadow-xl bg-azul text-white py-1 px-4 mb-2'>Últimos 7 días</button>
-                        <div className="rounded-2xl shadow-xl border border-slate-200 bg-white mb-8">
-                            <UsageChart />
+        <section className='h-full bg-celeste'>
+            <AnimatedPage>
+                <div className='h-full w-full'>
+                    <div className='max-w-md flex flex-col justify-between h-full mx-auto p-4'>
+                        <div className='flex justify-center items-center h-72 w-3/4 mx-auto'>
+                            <blockquote>
+                                <p className='italic text-xl my-2'>&#34;{quote.quote}&#34;</p>
+                                <footer className='font-semibold text-xl text-right my-2'>- {quote.author}</footer>
+                            </blockquote>
+                        </div>
+                        <div>
+                            <button className='rounded-full shadow-xl bg-azul text-white py-1 px-4 mb-2'>Últimos 7 días</button>
+                            <div className="rounded-2xl shadow-xl border border-slate-200 bg-white mb-8">
+                                <UsageChart />
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </AnimatedPage>
         </section>
     )
 }

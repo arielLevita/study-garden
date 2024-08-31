@@ -20,7 +20,7 @@ export default {
         },
       },
       animation: {
-        fadeIn: "fadeIn 0.2s ease-in-out forwards",
+        fadeIn: "fadeIn 0.7s ease-in-out forwards",
       },
     },
   },

@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter, createRoutesFromElements, Route } from "react-router-dom";
 import App from "../App";
 import HomePage from "../pages/HomePage";
 import NewTaskFormHandler from "../components/NewTaskFormHandler";
@@ -9,9 +9,26 @@ import UnderConstruction from "../components/UnderConstruction";
 import SavedTasks from "../pages/SavedTasks";
 import StatsPage from "../pages/StatsPage";
 import TasksListPage from "../pages/TasksListPage";
-// import UsageLog from "../components/UsageLog";
 
-const router = createBrowserRouter([
+
+const router = createBrowserRouter(
+    createRoutesFromElements(
+        <Route path="/" element={<App />}>
+            <Route path="/" element={<HomePage />}></Route>
+            <Route path="/newtask/*" element={<NewTaskFormHandler />}>
+                <Route path="taskconfiguration" element={<TaskConfiguration />}></Route>
+                <Route path="taskdescription" element={<TaskDescriptionPage />}></Route>
+                <Route path="audioselector" element={<AudioSelector />}></Route>
+            </Route>
+            <Route path="/savedtasks" element={<SavedTasks />}></Route>
+            <Route path="/taskslist" element={<TasksListPage />}></Route>
+            <Route path="/statspage" element={<StatsPage />}></Route>
+            <Route path="/underconstruction" element={<UnderConstruction />}></Route>
+        </Route>
+    )
+)
+
+/* const router = createBrowserRouter([
     {
         path:'/',
         element: <App />,
@@ -50,16 +67,12 @@ const router = createBrowserRouter([
                 path: '/statspage',
                 element: <StatsPage />
             },
-            /* {
-                path: '/usagelog',
-                element: <UsageLog />
-            }, */
             {
                 path: '/underconstruction',
                 element: <UnderConstruction />
             },
         ]
     }
-])
+]) */
 
 export default router;
