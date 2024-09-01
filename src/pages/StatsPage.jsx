@@ -65,11 +65,13 @@ const StatsPage = () => {
             <AnimatedPage>
                 <div className='h-full w-full'>
                     <div className='max-w-md flex flex-col justify-between h-full mx-auto p-4'>
-                        <div className='flex justify-center items-center h-72 w-3/4 mx-auto'>
-                            <blockquote>
-                                <p className='italic text-xl my-2'>&#34;{quote.quote}&#34;</p>
-                                <footer className='font-semibold text-xl text-right my-2'>- {quote.author}</footer>
-                            </blockquote>
+                        <div className='flex justify-center items-center h-72 w-full mx-auto'>
+                            <div className='w-full h-fit border-2 border-naranja border-dashed rounded-2xl p-4'>
+                                <blockquote className=''>
+                                    <p className='italic text-xl my-2'>&#34;{quote.quote}&#34;</p>
+                                    <footer className='font-semibold text-xl text-right my-2'>- {quote.author}</footer>
+                                </blockquote>
+                            </div>
                         </div>
                         <div>
                             <label className="relative group flex justify-around items-center w-1/2 h-8 bg-white bg-opacity-35 shadow-sm rounded-full border border-azul border-opacity-25 mb-2">
@@ -87,8 +89,8 @@ const StatsPage = () => {
                         </div>
                     </div>
                 </div>
-            </AnimatedPage >
-        </section >
+            </AnimatedPage>
+        </section>
     )
 }
 

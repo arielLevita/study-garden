@@ -20,7 +20,9 @@ const AudioSelector = ({ audios, selectedAudio, handleAudioChange }) => {
             audioElement.pause()
         }
         if (audioElement && selectedSource) {
+            audioElement.pause();
             audioElement.src = selectedSource;
+            audioElement.load(); 
             audioElement.play().catch(error => {
                 console.error("Error playing audio:", error);
             });

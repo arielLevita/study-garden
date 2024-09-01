@@ -112,32 +112,6 @@ const UsageChart = ({ showDailyStats }) => {
                         </ResponsiveContainer>
                     </div>
             }
-            {/* <div className='w-full h-72 p-2'>
-                <ResponsiveContainer width="100%" height="100%">
-                    <BarChart
-                        width={300}
-                        height={200}
-                        data={sevenDaysChartArray}
-                        barSize={'10%'}
-                        margin={{ top: 12 }}
-                    >
-                        <Bar
-                            dataKey="minutes"
-                            className='fill-celeste drop-shadow-[1px_2px_2px_rgba(0,0,0,0.2)]'
-                            label={{ fill: '#1a3551', fontWeight: 600, fontSize: '12px', position: 'top' }}
-                        />
-                        <XAxis
-                            dataKey="date"
-                            axisLine={false}
-                            tickLine={false}
-                            tickMargin={8}
-                            tickFormatter={dailyTickFormatter}
-                            className='text-xs'
-                        />
-                    </BarChart>
-                </ResponsiveContainer>
-            </div> */}
-
         </div>
     )
 }
