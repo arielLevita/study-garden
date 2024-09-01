@@ -12,7 +12,6 @@ const NewTaskFormHandler = () => {
     const [currentTask, setCurrentTask] = useState(null)
     const [currentTimer, setCurrentTimer] = useState(0);
     const [currentTitle, setCurrentTitle] = useState("");
-    let currentPlant = null;
     const [currentDescription, setCurrentDescription] = useState("");
     const navigate = useNavigate();
 
@@ -29,7 +28,7 @@ const NewTaskFormHandler = () => {
             name: 'musicLoFi',
             value: 'musicLoFi',
             label: 'Música Lo-Fi',
-            source: 'https://cdn.pixabay.com/audio/2024/01/15/audio_9914e58808.mp3'
+            source: 'https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3'
         },
         {
             id: 'pianoMelody',
@@ -110,7 +109,6 @@ const NewTaskFormHandler = () => {
                     <Route path={'taskconfiguration'} element={
                         <TaskConfiguration
                             currentTask={currentTask}
-                            currentPlant={currentPlant}
                             currentTitle={currentTitle}
                             currentDescription={currentDescription}
                             currentTimer={currentTimer}

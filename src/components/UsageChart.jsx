@@ -1,10 +1,12 @@
+/* eslint-disable react/prop-types */
 import { useState, useEffect } from 'react';
 import { BarChart, Bar, XAxis, ResponsiveContainer } from 'recharts';
 import { LOCAL_STORAGE_KEY } from '../App';
 
-const UsageChart = () => {
+const UsageChart = ({ showDailyStats }) => {
 
-    const [chartArray, setChartArray] = useState([])
+    const [sevenDaysChartArray, setSevenDaysChartArray] = useState([]);
+    const [weeklyChartArray, setWeeklyChartArray] = useState([]);
 
     useEffect(() => {
         const tasks = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
@@ -16,15 +18,33 @@ const UsageChart = () => {
             return { date: date.toISOString().split('T')[0], minutes: 0 };
         }).reverse();
 
-        const chartData = last7Days.map(day => {
+        const sevenDaysChartData = last7Days.map(day => {
             const record = records.find(r => r.date === day.date);
             return record ? record : day;
         });
 
-        setChartArray(chartData)
+        setSevenDaysChartArray(sevenDaysChartData)
+
+
+        const weeklyData = Array.from({ length: 4 }, (_, i) => {
+            const startDate = new Date();
+            startDate.setDate(startDate.getDate() - (i + 1) * 7 + 1); // Start of the week
+            const endDate = new Date(startDate);
+            endDate.setDate(endDate.getDate() + 6); // End of the week
+
+            const weekLabel = i === 0 ? 'Esta semana' : i === 1 ? 'Semana pasada' : `${i + 1} semanas`;
+            const weekMinutes = records.reduce((total, record) => {
+                const recordDate = new Date(record.date);
+                return recordDate >= startDate && recordDate <= endDate ? total + record.minutes : total;
+            }, 0);
+
+            return { week: weekLabel, minutes: weekMinutes };
+        }).reverse();
+
+        setWeeklyChartArray(weeklyData);
     }, [])
 
-    function tickFormatter(inputDate) {
+    function dailyTickFormatter(inputDate) {
         var date = new Date(inputDate);
         const month = ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "jul", "Ago", "Sep", "Oct", "Nov", "Dic"];
         if (!isNaN(date.getTime())) {
@@ -32,14 +52,72 @@ const UsageChart = () => {
         }
     }
 
+    function weeklyTickFormatter(weekLabel) {
+        return weekLabel
+    }
+
     return (
         <div>
-            <div className='w-full h-72 p-2'>
+            {
+                showDailyStats
+                    ? <div className='w-full h-72 p-2'>
+                        <ResponsiveContainer width="100%" height="100%">
+                            <BarChart
+                                width={300}
+                                height={200}
+                                data={sevenDaysChartArray}
+                                barSize={'10%'}
+                                margin={{ top: 16 }}
+                            >
+                                <Bar
+                                    dataKey="minutes"
+                                    className='fill-celeste drop-shadow-[1px_2px_2px_rgba(0,0,0,0.2)]'
+                                    label={{ fill: '#1a3551', fontWeight: 600, fontSize: '12px', position: 'top' }}
+                                />
+                                <XAxis
+                                    dataKey="date"
+                                    axisLine={false}
+                                    tickLine={false}
+                                    tickMargin={8}
+                                    tickFormatter={dailyTickFormatter}
+                                    className='text-xs'
+                                />
+                            </BarChart>
+                        </ResponsiveContainer>
+                    </div>
+                    : <div className='w-full h-72 p-2'>
+                        <ResponsiveContainer width="100%" height="100%">
+                            <BarChart
+                                width={300}
+                                height={200}
+                                data={weeklyChartArray}
+                                barSize={'15%'}
+                                margin={{ top: 16 }}
+                            >
+                                <Bar
+                                    dataKey="minutes"
+                                    className='fill-celeste drop-shadow-[1px_2px_2px_rgba(0,0,0,0.2)]'
+                                    label={{ fill: '#1a3551', fontWeight: 600, fontSize: '12px', position: 'top' }}
+                                />
+                                <XAxis
+                                    dataKey="week"
+                                    axisLine={false}
+                                    tickLine={false}
+                                    tickMargin={8}
+                                    tickSize={6}
+                                    tickFormatter={weeklyTickFormatter}
+                                    className='text-xs'
+                                />
+                            </BarChart>
+                        </ResponsiveContainer>
+                    </div>
+            }
+            {/* <div className='w-full h-72 p-2'>
                 <ResponsiveContainer width="100%" height="100%">
                     <BarChart
                         width={300}
                         height={200}
-                        data={chartArray}
+                        data={sevenDaysChartArray}
                         barSize={'10%'}
                         margin={{ top: 12 }}
                     >
@@ -53,12 +131,13 @@ const UsageChart = () => {
                             axisLine={false}
                             tickLine={false}
                             tickMargin={8}
-                            tickFormatter={tickFormatter}
+                            tickFormatter={dailyTickFormatter}
                             className='text-xs'
                         />
                     </BarChart>
                 </ResponsiveContainer>
-            </div>
+            </div> */}
+
         </div>
     )
 }

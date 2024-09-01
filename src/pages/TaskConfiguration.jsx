@@ -17,10 +17,10 @@ const TaskConfiguration = ({
     currentTitle,
     currentTimer,
     selectedAudio,
-    handlePlantChange,
     adjustTimerAmount,
     onSubmit,
 }) => {
+    
     const [taskTitles, setTaskTitles] = useState([]);
     const tasks = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
     const currentPlant = tasks.currentTask.plant;
@@ -73,21 +73,10 @@ const TaskConfiguration = ({
                                         Planta a dar vida
                                     </h3>
                                     <div className="grid grid-cols-3 gap-4">
-                                        {plants?.map((plant, index) => (
-                                            <>
+                                        {plants?.map((plant) => (
+                                            <div key={plant.name} className="relative w-full max-w-24 aspect-square max-h-24 rounded-full mx-auto">
                                                 <label
-                                                    key={index}
-                                                    className="relative 
-                                                        group 
-                                                        max-h-24 
-                                                        aspect-square 
-                                                        rounded-full 
-                                                        bg-celeste 
-                                                        has-[:checked]:bg-naranja 
-                                                        has-[:checked]:scale-110 
-                                                        has-[:checked]:shadow-lg 
-                                                        p-2 
-                                                        mx-auto"
+                                                    className="group block w-full h-full rounded-full bg-celeste has-[:checked]:bg-naranja has-[:checked]:scale-110 has-[:checked]:shadow-lg p-2"
                                                 >
                                                     <Lottie
                                                         className="h-full mx-auto"
@@ -108,12 +97,11 @@ const TaskConfiguration = ({
                                                         type="radio"
                                                         name="plant"
                                                         value={plant.name}
-                                                        className="absolute [appearance:none]"
+                                                        className="absolute top-0 left-0 hidden"
                                                         defaultChecked={currentPlant?.name == plant.name}
-                                                        onChange={handlePlantChange}
                                                     />
                                                 </label>
-                                            </>
+                                            </div>
                                         ))}
                                     </div>
                                 </div>
@@ -123,10 +111,9 @@ const TaskConfiguration = ({
                                     </h3>
                                     <div className="flex justify-around gap-3 mb-2 px-2">
                                         {taskTitles?.map((title, index) => (
-                                            <>
+                                            <div key={index} className="w-1/3">
                                                 <label
-                                                    key={index}
-                                                    className="group flex justify-center items-center w-1/3 bg-azul has-[:checked]:bg-naranja rounded-full drop-shadow-[0_3px_3px_rgba(0,0,0,0.15)] p-2"
+                                                    className="group flex justify-center items-center w-full bg-azul has-[:checked]:bg-naranja rounded-full drop-shadow-[0_3px_3px_rgba(0,0,0,0.15)] p-2"
                                                     htmlFor={title}
                                                 >
                                                     <div className="hidden group-has-[:checked]:block  bg-azul rounded-full mr-2">
@@ -150,7 +137,7 @@ const TaskConfiguration = ({
                                                         defaultChecked={index == 2}
                                                     />
                                                 </label>
-                                            </>
+                                            </div>
                                         ))}
                                     </div>
                                     <Link

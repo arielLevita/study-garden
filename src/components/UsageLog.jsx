@@ -29,15 +29,17 @@ const UsageLog = ({ isRunning }) => {
             const minutesElapsed = Math.floor(elapsedTime / 60000);
 
             setRecords((prevRecords) => {
-                const existingRecord = prevRecords.find(record => record.date === today);
+                const updatedRecords = prevRecords.length === 30 ? prevRecords.slice(1) : prevRecords;
+            
+                const existingRecord = updatedRecords.find(record => record.date === today);
                 if (existingRecord) {
-                    return prevRecords.map(record =>
+                    return updatedRecords.map(record =>
                         record.date === today
                         ? { ...record, minutes: record.minutes + minutesElapsed }
                         : record
                     );
                 } else {
-                    return [...prevRecords, { date: today, minutes: minutesElapsed }];
+                    return [...updatedRecords, { date: today, minutes: minutesElapsed }];
                 }
             });
 

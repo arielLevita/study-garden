@@ -4,6 +4,8 @@ import AnimatedPage from '../components/AnimatedPage';
 
 const StatsPage = () => {
 
+    const [showDailyStats, setShowDailyStats] = useState(true);
+
     const quotes = [
         {
             quote: 'El secreto del éxito no es hacer lo que te gusta, sino que te guste lo que haces.',
@@ -70,15 +72,23 @@ const StatsPage = () => {
                             </blockquote>
                         </div>
                         <div>
-                            <button className='rounded-full shadow-xl bg-azul text-white py-1 px-4 mb-2'>Últimos 7 días</button>
+                            <label className="relative group flex justify-around items-center w-1/2 h-8 bg-white bg-opacity-35 shadow-sm rounded-full border border-azul border-opacity-25 mb-2">
+                                <input type="checkbox" value="" className="hidden" onChange={() => setShowDailyStats(!showDailyStats)} />
+                                <div className='absolute flex items-center h-full w-1/2 top-0 left-0 drop-shadow-[1px_2px_2px_rgba(0,0,0,0.3)] bg-naranja rounded-full transition ease-in-out delay-150 group-has-[:checked]:translate-x-full *:w-full *:text-center *:text-black *:animate-fadeIn'>
+                                    <div className='group-has-[:checked]:hidden'>7 días</div>
+                                    <div className='hidden group-has-[:checked]:block'>Semanal</div>
+                                </div>
+                                <span>7 días</span>
+                                <span>Semanal</span>
+                            </label>
                             <div className="rounded-2xl shadow-xl border border-slate-200 bg-white mb-8">
-                                <UsageChart />
+                                <UsageChart showDailyStats={showDailyStats} />
                             </div>
                         </div>
                     </div>
                 </div>
-            </AnimatedPage>
-        </section>
+            </AnimatedPage >
+        </section >
     )
 }
 
