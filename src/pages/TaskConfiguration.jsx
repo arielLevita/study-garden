@@ -113,10 +113,10 @@ const TaskConfiguration = ({
                                         {taskTitles?.map((title, index) => (
                                             <div key={index} className="w-1/3">
                                                 <label
-                                                    className="group flex justify-center items-center w-full min-h-10 bg-azul has-[:checked]:bg-naranja rounded-full drop-shadow-[0_3px_3px_rgba(0,0,0,0.15)] p-2"
+                                                    className="group flex items-center justify-center w-full h-10 bg-azul has-[:checked]:bg-naranja rounded-full drop-shadow-[0_3px_3px_rgba(0,0,0,0.15)] p-2"
                                                     htmlFor={title}
                                                 >
-                                                    <div className="hidden group-has-[:checked]:block bg-azul rounded-full mr-2">
+                                                    <div className="hidden w-fit group-has-[:checked]:block bg-azul rounded-full mr-2">
                                                         <svg
                                                             className="w-6 aspect-square fill-white z-10"
                                                             xmlns="http://www.w3.org/2000/svg"
@@ -125,7 +125,7 @@ const TaskConfiguration = ({
                                                             <path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z" />
                                                         </svg>
                                                     </div>
-                                                    <div className="text-white text-center text-xs group-has-[:checked]:text-azul">
+                                                    <div className="text-white text-center text-xs [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:2] overflow-hidden text-ellipsis group-has-[:checked]:text-azul">
                                                         {title}
                                                     </div>
                                                     <input
