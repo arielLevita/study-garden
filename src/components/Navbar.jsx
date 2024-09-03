@@ -1,23 +1,17 @@
-import { Link } from "react-router-dom"
+import { NavLink } from "react-router-dom"
 
 const Navbar = () => {
-
-    const linkStyles = {
-        width: 24,
-        height: 24,
-        fill: '#f3f4f6'
-    }
 
     const navbarLinks = [
         {
             name: 'Nueva',
             to: '/newtask/taskconfiguration',
-            icon: <svg style={linkStyles} xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M440-280h80v-160h160v-80H520v-160h-80v160H280v80h160v160Zm40 200q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/></svg>
+            icon: <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M440-280h80v-160h160v-80H520v-160h-80v160H280v80h160v160Zm40 200q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z" /></svg>
         },
         {
             name: 'Guardado',
             to: '/savedtasks',
-            icon: <svg style={linkStyles} xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M840-680v480q0 33-23.5 56.5T760-120H200q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h480l160 160Zm-80 34L646-760H200v560h560v-446ZM480-240q50 0 85-35t35-85q0-50-35-85t-85-35q-50 0-85 35t-35 85q0 50 35 85t85 35ZM240-560h360v-160H240v160Zm-40-86v446-560 114Z" /></svg>
+            icon: <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M840-680v480q0 33-23.5 56.5T760-120H200q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h480l160 160Zm-80 34L646-760H200v560h560v-446ZM480-240q50 0 85-35t35-85q0-50-35-85t-85-35q-50 0-85 35t-35 85q0 50 35 85t85 35ZM240-560h360v-160H240v160Zm-40-86v446-560 114Z" /></svg>
         },
         {
             name: '',
@@ -27,12 +21,12 @@ const Navbar = () => {
         {
             name: 'Tareas',
             to: '/taskslist',
-            icon: <svg style={linkStyles} xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M222-200 80-342l56-56 85 85 170-170 56 57-225 226Zm0-320L80-662l56-56 85 85 170-170 56 57-225 226Zm298 240v-80h360v80H520Zm0-320v-80h360v80H520Z" /></svg>
+            icon: <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M222-200 80-342l56-56 85 85 170-170 56 57-225 226Zm0-320L80-662l56-56 85 85 170-170 56 57-225 226Zm298 240v-80h360v80H520Zm0-320v-80h360v80H520Z" /></svg>
         },
         {
             name: 'Estadísticas',
             to: '/statspage',
-            icon: <svg style={linkStyles} xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M160-160v-320h160v320H160Zm240 0v-640h160v640H400Zm240 0v-440h160v440H640Z" /></svg>
+            icon: <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M160-160v-320h160v320H160Zm240 0v-640h160v640H400Zm240 0v-440h160v440H640Z" /></svg>
         }
     ]
 
@@ -43,17 +37,24 @@ const Navbar = () => {
                     {
                         navbarLinks.map((link) => (
                             <li className="w-1/5" key={link.name}>
-                                <Link to={link.to}>
-                                    <div className="flex justify-center">{link.icon}</div>
+                                <NavLink
+                                    to={link.to}
+                                    className={({ isActive, isPending }) =>
+                                        isPending ? "pending" 
+                                        : isActive ? "relative *:text-celeste *:fill-celeste after:absolute after:content-[''] after:-bottom-4 after:inset-x-0 after:mx-auto after:w-1/2 after:h-1.5 after:bg-celeste after:rounded-full after:rounded-b-none" 
+                                        : ""
+                                    }
+                                >
+                                    <div className="flex justify-center fill-gray-100 w-6 h-6 mx-auto">{link.icon}</div>
                                     <div className="text-center text-xs text-gray-100">{link.name}</div>
-                                </Link>
+                                </NavLink>
                             </li>
                         ))
                     }
                 </ul>
 
                 <div className="absolute inset-x-0 -top-4 m-auto w-[15%] aspect-square">
-                    <Link to="/" className="block bg-naranja w-full h-full rounded-full">
+                    <NavLink to="/" className="block bg-naranja w-full h-full rounded-full">
                         <button className="flex flex-col justify-center items-center w-full h-full rounded-full ring-claro ring-4">
                             <div className="w-1 h-1/6 bg-naranja"></div>
                             <div className="relative w-2/3 h-2/3 rounded-full bg-black">
@@ -61,7 +62,7 @@ const Navbar = () => {
                             </div>
                             <div className="w-1 h-1/6 bg-black"></div>
                         </button>
-                    </Link>
+                    </NavLink>
                 </div>
             </div>
         </div>
