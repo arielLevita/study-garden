@@ -1,5 +1,5 @@
 import { LOCAL_STORAGE_KEY } from "../App";
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
 
 const ResetAppButton = () => {
 

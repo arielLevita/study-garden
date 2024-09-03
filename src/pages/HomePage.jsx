@@ -4,7 +4,10 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import Countdown from "react-countdown";
 import Lottie from "lottie-react";
+import Swal from 'sweetalert2';
 import { LOCAL_STORAGE_KEY } from "../App";
+import UsageLog from "../components/UsageLog";
+import AnimatedPage from "../components/AnimatedPage";
 import plant01 from "../assets/AnimatedPlants/plant01-animation.json";
 // eslint-disable-next-line no-unused-vars
 import plant02 from "../assets/AnimatedPlants/plant02-animation.json";
@@ -16,8 +19,6 @@ import plant06 from "../assets/AnimatedPlants/plant06-animation.json";
 import plant07 from "../assets/AnimatedPlants/plant07-animation.json";
 // eslint-disable-next-line no-unused-vars
 import plant09 from "../assets/AnimatedPlants/plant09-animation.json";
-import UsageLog from "../components/UsageLog";
-import AnimatedPage from "../components/AnimatedPage";
 
 const HomePage = () => {
     const defaultTask = {
@@ -37,7 +38,7 @@ const HomePage = () => {
     };
 
     const [isMuted, setIsMuted] = useState(false);
-    const [doNotDisturbOn, setDoNotDisturbOn] = useState(false);
+    // const [doNotDisturbOn, setDoNotDisturbOn] = useState(false);
 
     const lottieRef = useRef();
     const audioRef = useRef(null);
@@ -123,11 +124,17 @@ const HomePage = () => {
         }
     }, []);
 
+    useEffect(() => {
+        lottieRef.current.pause();
+    }, [currentTask])
+
     const playAudio = () => {
         toggleTaskRunning();
         const audioElement = audioRef.current;
         if (audioElement && currentTask.audio.source) {
+            // audioElement.pause();
             audioElement.src = currentTask.audio.source;
+            // audioElement.load(); 
             audioElement.play().catch((error) => {
                 console.error("Error playing audio:", error);
             });
@@ -151,9 +158,9 @@ const HomePage = () => {
         }
     };
 
-    const toggleDoNotDisturb = () => {
+    /* const toggleDoNotDisturb = () => {
         setDoNotDisturbOn(!doNotDisturbOn);
-    };
+    }; */
 
     const toggleTaskRunning = () => {
         setTaskRunning(!taskRunning);
@@ -174,9 +181,21 @@ const HomePage = () => {
     };
 
     const handleStartClick = () => {
-        countdownApi && countdownApi.start();
-        lottieRef.current.play();
-        playAudio();
+        Swal.fire({
+            text: 'Recuerde activar el modo "no molestar" de su teléfono para mejorar la experiencia.',
+            icon: "warning",
+            iconColor: "orange",
+            customClass: {
+                confirmButton: "text-black font-medium bg-naranja rounded-lg w-full py-2 px-4 m-1",
+                cancelButton: "text-black font-medium rounded-lg w-full border border-black py-2 px-4 m-1"
+            },
+            buttonsStyling: false,
+            didClose() {
+                countdownApi && countdownApi.start();
+                lottieRef.current.play();
+                playAudio();
+            }
+        });
     };
 
     const handlePauseClick = () => {
@@ -204,7 +223,7 @@ const HomePage = () => {
                                 </button>
                             </Link>
                             <div>
-                                <button
+                                {/* <button
                                     className="bg-celeste rounded-full p-2 ml-2"
                                     onClick={toggleDoNotDisturb}
                                 >
@@ -225,7 +244,7 @@ const HomePage = () => {
                                             <path d="M280-440h400v-80H280v80ZM480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z" />
                                         </svg>
                                     )}
-                                </button>
+                                </button> */}
                                 <button
                                     className="bg-celeste rounded-full p-2 ml-2"
                                     onClick={toggleMute}
@@ -329,8 +348,8 @@ const HomePage = () => {
                                 <motion.button
                                     className="flex justify-center items-center gap-3 w-2/3 bg-naranja rounded-full drop-shadow-lg p-4"
                                     type="button"
-                                    whileHover={{ scale: 1.1 }}
-                                    whileTap={{ scale: 0.9 }}
+                                    whileHover={{ scale: 1.03 }}
+                                    whileTap={{ scale: 0.97 }}
                                     transition={{ type: "spring", stiffness: 400, damping: 17 }}
                                     onClick={handleStartClick}
                                 >
