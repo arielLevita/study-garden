@@ -21,15 +21,15 @@ const NotificationsSwitch = () => {
 
     return (
         <div className="flex justify-between items-center">
-            <span className="w-full text-left text-azul font-medium">Notificaciones</span>
-            <label className="relative group flex justify-around items-center w-12 h-6 bg-white bg-opacity-35 shadow-sm rounded-full border border-azul border-opacity-25">
+            <span className="w-full text-lg text-left text-azul font-medium">Notificaciones</span>
+            <label className="relative group flex justify-around items-center w-[72px] h-8 bg-white bg-opacity-35 shadow-sm rounded-full border border-azul border-opacity-25">
                 <input
                     type="checkbox"
                     value=""
                     className="hidden"
                     onChange={handleShowNotifications}
                 />
-                <div className="absolute flex items-center h-4 w-4 inset-y-0 left-1 my-auto drop-shadow bg-naranja rounded-full ring-1 ring-azul ring-inset transition ease-in-out delay-150 group-has-[:checked]:translate-x-full group-has-[:checked]:bg-transparent"></div>
+                <div className="absolute flex items-center h-6 w-6 inset-y-0 left-1 my-auto drop-shadow bg-naranja rounded-full ring-1 ring-azul ring-inset transition ease-in-out delay-150 group-has-[:checked]:translate-x-full group-has-[:checked]:bg-transparent"></div>
             </label>
         </div>
     );

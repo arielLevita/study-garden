@@ -51,7 +51,7 @@ const ResetAppButton = () => {
     return (
         <button
             onClick={handleResetApp}
-            className="w-full text-left text-azul font-medium"
+            className="w-full text-lg text-left text-azul font-medium"
         >
             Reiniciar aplicación
         </button>

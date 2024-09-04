@@ -9,6 +9,7 @@ import UnderConstruction from "../components/UnderConstruction";
 import SavedTasks from "../pages/SavedTasks";
 import StatsPage from "../pages/StatsPage";
 import TasksListPage from "../pages/TasksListPage";
+import AboutPage from "../pages/AboutPage";
 import NotFound from "../components/NotFound";
 
 const router = createBrowserRouter([
@@ -49,6 +50,10 @@ const router = createBrowserRouter([
             {
                 path: 'statspage',
                 element: <StatsPage />
+            },
+            {
+                path: 'about',
+                element: <AboutPage />
             },
             {
                 path: 'underconstruction',

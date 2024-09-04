@@ -28,6 +28,9 @@ const Topbar = () => {
             case '/statspage':
                 setCurrentPath('Estadísticas');
                 break;
+            case '/about':
+                setCurrentPath('Acerca de');
+                break;
             case '/underconstruction':
                 setCurrentPath('En construcción');
                 break;
