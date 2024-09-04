@@ -31,6 +31,9 @@ const Topbar = () => {
             case '/about':
                 setCurrentPath('Acerca de');
                 break;
+            case '/contact':
+                setCurrentPath('Contacto');
+                break;
             case '/underconstruction':
                 setCurrentPath('En construcción');
                 break;

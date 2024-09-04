@@ -21,6 +21,11 @@ const HomeMenu = () => {
                     </Link>
                 </li>
                 <li className="block w-full origin-right will-change-[transform,opacity,filter] list-none">
+                    <Link to={'/contact'} className="w-full text-lg text-left text-azul font-medium">
+                        Contacto
+                    </Link>
+                </li>
+                <li className="block w-full origin-right will-change-[transform,opacity,filter] list-none">
                     <ResetAppButton />
                 </li>
             </ul>

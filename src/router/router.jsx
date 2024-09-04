@@ -11,6 +11,7 @@ import StatsPage from "../pages/StatsPage";
 import TasksListPage from "../pages/TasksListPage";
 import AboutPage from "../pages/AboutPage";
 import NotFound from "../components/NotFound";
+import ContactFormPage from "../pages/ContactFormPage";
 
 const router = createBrowserRouter([
     {
@@ -54,6 +55,10 @@ const router = createBrowserRouter([
             {
                 path: 'about',
                 element: <AboutPage />
+            },
+            {
+                path: 'contact',
+                element: <ContactFormPage />
             },
             {
                 path: 'underconstruction',
