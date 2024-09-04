@@ -115,6 +115,7 @@ const HomePage = () => {
                     },
                 ],
                 records: [{ date: today, minutes: 0 }],
+                showNotifications: true,
             };
             if (today) {
                 localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(newTasks));
@@ -132,9 +133,9 @@ const HomePage = () => {
         toggleTaskRunning();
         const audioElement = audioRef.current;
         if (audioElement && currentTask.audio.source) {
-            // audioElement.pause();
+            audioElement.pause();
             audioElement.src = currentTask.audio.source;
-            // audioElement.load(); 
+            audioElement.load(); 
             audioElement.play().catch((error) => {
                 console.error("Error playing audio:", error);
             });
@@ -181,21 +182,29 @@ const HomePage = () => {
     };
 
     const handleStartClick = () => {
-        Swal.fire({
-            text: 'Recuerde activar el modo "no molestar" de su teléfono para mejorar la experiencia.',
-            icon: "warning",
-            iconColor: "orange",
-            customClass: {
-                confirmButton: "text-black font-medium bg-naranja rounded-lg w-full py-2 px-4 m-1",
-                cancelButton: "text-black font-medium rounded-lg w-full border border-black py-2 px-4 m-1"
-            },
-            buttonsStyling: false,
-            didClose() {
-                countdownApi && countdownApi.start();
-                lottieRef.current.play();
-                playAudio();
-            }
-        });
+        const tasks = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
+        let showNotifications = tasks.showNotifications;
+        if (showNotifications) {
+            Swal.fire({
+                text: 'Recuerde activar el modo "no molestar" de su teléfono para mejorar la experiencia.',
+                icon: "warning",
+                iconColor: "orange",
+                customClass: {
+                    confirmButton: "text-black font-medium bg-naranja rounded-lg w-full py-2 px-4 m-1",
+                    cancelButton: "text-black font-medium rounded-lg w-full border border-black py-2 px-4 m-1"
+                },
+                buttonsStyling: false,
+                didClose() {
+                    countdownApi && countdownApi.start();
+                    lottieRef.current.play();
+                    playAudio();
+                }
+            });
+        } else {
+            countdownApi && countdownApi.start();
+            lottieRef.current.play();
+            playAudio();
+        }
     };
 
     const handlePauseClick = () => {
