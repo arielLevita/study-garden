@@ -28,7 +28,7 @@ const NotificationsSwitch = () => {
                     className="hidden"
                     onChange={handleShowNotifications}
                 />
-                <div className="absolute flex justify-center items-center h-6 w-6 inset-y-0 right-1 my-auto drop-shadow bg-colorAcento rounded-full ring-1 ring-colorSecundario ring-inset transition ease-in-out delay-150 group-has-[:checked]:-translate-x-full group-has-[:checked]:bg-transparent group-has-[:checked]:scale-75">
+                <div className="absolute flex justify-center items-center h-6 w-6 inset-y-0 right-1 my-auto drop-shadow bg-colorAcento rounded-full ring-1 ring-colorSecundario ring-inset transition ease-in-out duration-150 group-has-[:checked]:-translate-x-full group-has-[:checked]:bg-transparent group-has-[:checked]:scale-75">
                     <svg
                         className="block w-4 aspect-square fill-black z-10 group-has-[:checked]:hidden"
                         xmlns="http://www.w3.org/2000/svg"
