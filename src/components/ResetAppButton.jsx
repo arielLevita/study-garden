@@ -7,7 +7,7 @@ const ResetAppButton = () => {
 
         const ResetAppSwal = Swal.mixin({
             customClass: {
-                confirmButton: "text-black font-medium bg-naranja rounded-lg w-full py-2 px-4 m-1",
+                confirmButton: "text-black font-medium bg-colorAcento rounded-lg w-full py-2 px-4 m-1",
                 cancelButton: "text-black font-medium rounded-lg w-full border border-black py-2 px-4 m-1"
             },
             buttonsStyling: false,
@@ -51,7 +51,7 @@ const ResetAppButton = () => {
     return (
         <button
             onClick={handleResetApp}
-            className="w-full text-lg text-left text-azul font-medium"
+            className="w-full text-xl text-left text-colorSecundario font-medium"
         >
             Reiniciar aplicación
         </button>

@@ -71,7 +71,7 @@ const UsageChart = ({ showDailyStats }) => {
                             >
                                 <Bar
                                     dataKey="minutes"
-                                    className='fill-celeste drop-shadow-[1px_2px_2px_rgba(0,0,0,0.2)]'
+                                    className='fill-colorPrincipal drop-shadow-[1px_2px_2px_rgba(0,0,0,0.2)]'
                                     label={{ fill: '#1a3551', fontWeight: 600, fontSize: '12px', position: 'top' }}
                                 />
                                 <XAxis
@@ -96,7 +96,7 @@ const UsageChart = ({ showDailyStats }) => {
                             >
                                 <Bar
                                     dataKey="minutes"
-                                    className='fill-celeste drop-shadow-[1px_2px_2px_rgba(0,0,0,0.2)]'
+                                    className='fill-colorPrincipal drop-shadow-[1px_2px_2px_rgba(0,0,0,0.2)]'
                                     label={{ fill: '#1a3551', fontWeight: 600, fontSize: '12px', position: 'top' }}
                                 />
                                 <XAxis

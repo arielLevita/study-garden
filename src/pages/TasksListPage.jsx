@@ -16,11 +16,11 @@ const TasksListPage = () => {
     }, [])
 
     return (
-        <section className="h-full w-full bg-celeste">
+        <section className="h-full w-full bg-colorPrincipal">
             <AnimatedPage>
                 <div className="flex flex-col justify-between max-w-md h-full mx-auto">
                     <div className="w-full px-4 overflow-y-scroll">
-                        <h3 className='text-azul text-xl font-semibold my-6'>Detalles de tareas</h3>
+                        <h3 className='text-colorSecundario text-xl font-semibold my-6'>Detalles de tareas</h3>
                         <div className="grid divide-y divide-neutral-200 mx-auto">
                             {
                                 savedTasks?.map((task) => (

@@ -28,35 +28,40 @@ const NewTaskFormHandler = () => {
             name: 'musicLoFi',
             value: 'musicLoFi',
             label: 'Música Lo-Fi',
-            source: 'https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3'
+            source: '/audios/lofi.mp3'
+            // source: 'https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3'
         },
         {
             id: 'pianoMelody',
             name: 'pianoMelody',
             value: 'pianoMelody',
             label: 'Melodía de piano',
-            source: 'https://cdn.pixabay.com/download/audio/2024/04/12/audio_85e1122b59.mp3'
+            source: '/audios/piano.mp3'
+            // source: 'https://cdn.pixabay.com/download/audio/2024/04/12/audio_85e1122b59.mp3'
         },
         {
             id: 'guitarMelody',
             name: 'guitarMelody',
             value: 'guitarMelody',
             label: 'Melodía de guitarra',
-            source: 'https://cdn.pixabay.com/download/audio/2023/06/19/audio_871c28dde0.mp3'
+            source: '/audios/guitar.mp3'
+            // source: 'https://cdn.pixabay.com/download/audio/2023/06/19/audio_871c28dde0.mp3'
         },
         {
             id: 'rainSound',
             name: 'rainSound',
             value: 'rainSound',
             label: 'Sonido de lluvia',
-            source: 'https://cdn.pixabay.com/download/audio/2024/05/21/audio_08ef8717b4.mp3'
+            source: '/audios/lluvia.mp3'
+            // source: 'https://cdn.pixabay.com/download/audio/2024/05/21/audio_08ef8717b4.mp3'
         },
         {
             id: 'waveSound',
             name: 'waveSound',
             value: 'waveSound',
             label: 'Sonido de olas',
-            source: 'https://cdn.pixabay.com/download/audio/2021/08/09/audio_165a149ae7.mp3'
+            source: '/audios/olas.mp3'
+            // source: 'https://cdn.pixabay.com/download/audio/2021/08/09/audio_165a149ae7.mp3'
         },
     ]
 
@@ -104,7 +109,7 @@ const NewTaskFormHandler = () => {
 
     return (
         <>
-            <div className='h-full w-full overflow-y-auto bg-celeste'>
+            <div className='h-full w-full overflow-y-auto bg-colorPrincipal'>
                 <Routes>
                     <Route path={'taskconfiguration'} element={
                         <TaskConfiguration

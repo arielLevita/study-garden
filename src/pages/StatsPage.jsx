@@ -61,12 +61,12 @@ const StatsPage = () => {
     }, []);
 
     return (
-        <section className='h-full bg-celeste'>
+        <section className='h-full bg-colorPrincipal'>
             <AnimatedPage>
                 <div className='h-full w-full'>
                     <div className='max-w-md flex flex-col justify-between h-full mx-auto p-4'>
                         <div className='flex justify-center items-center h-72 w-full mx-auto'>
-                            <div className='w-full h-fit border-2 border-naranja border-dashed rounded-2xl p-4'>
+                            <div className='w-full h-fit border-2 border-colorAcento border-dashed rounded-2xl p-4'>
                                 <blockquote className=''>
                                     <p className='italic text-xl my-2'>&#34;{quote.quote}&#34;</p>
                                     <footer className='font-semibold text-xl text-right my-2'>- {quote.author}</footer>
@@ -74,9 +74,9 @@ const StatsPage = () => {
                             </div>
                         </div>
                         <div>
-                            <label className="relative group flex justify-around items-center w-1/2 h-8 bg-white bg-opacity-35 shadow-sm rounded-full border border-azul border-opacity-25 mb-2">
+                            <label className="relative group flex justify-around items-center w-1/2 h-8 bg-white bg-opacity-35 shadow-sm rounded-full border border-colorSecundario border-opacity-25 mb-2">
                                 <input type="checkbox" value="" className="hidden" onChange={() => setShowDailyStats(!showDailyStats)} />
-                                <div className='absolute flex items-center h-full w-1/2 top-0 left-0 drop-shadow-[1px_2px_2px_rgba(0,0,0,0.3)] bg-naranja rounded-full transition ease-in-out delay-150 group-has-[:checked]:translate-x-full *:w-full *:text-center *:text-black *:animate-fadeIn'>
+                                <div className='absolute flex items-center h-full w-1/2 top-0 left-0 drop-shadow-[1px_2px_2px_rgba(0,0,0,0.3)] bg-colorAcento rounded-full transition ease-in-out delay-150 group-has-[:checked]:translate-x-full *:w-full *:text-center *:text-black *:animate-fadeIn'>
                                     <div className='group-has-[:checked]:hidden'>7 días</div>
                                     <div className='hidden group-has-[:checked]:block'>Semanal</div>
                                 </div>

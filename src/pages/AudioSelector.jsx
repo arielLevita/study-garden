@@ -44,7 +44,7 @@ const AudioSelector = ({ audios, selectedAudio, handleAudioChange }) => {
                                     audios?.map((audio, index) => (
                                         <div key={audio.name}>
                                             <label
-                                                className="group w-full flex justify-between items-center bg-celeste has-[:checked]:bg-azul text-black has-[:checked]:text-white fill-black has-[:checked]:fill-white rounded-lg py-2 px-4"
+                                                className="group w-full flex justify-between items-center bg-colorPrincipal has-[:checked]:bg-colorSecundario text-black has-[:checked]:text-white fill-black has-[:checked]:fill-white rounded-lg py-2 px-4"
                                                 htmlFor={audio.id}
                                             >
                                                 <span className="flex items-center text-lg">
@@ -56,7 +56,7 @@ const AudioSelector = ({ audios, selectedAudio, handleAudioChange }) => {
                                                     )}
                                                     {audio.label}
                                                 </span>
-                                                <div className='hidden group-has-[:checked]:block w-6 h-6 bg-naranja rounded-full mr-2'>
+                                                <div className='hidden group-has-[:checked]:block w-6 h-6 bg-colorAcento rounded-full mr-2'>
                                                     <svg className='w-6 aspect-square fill-white z-10' xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z" /></svg>
                                                 </div>
                                                 <input

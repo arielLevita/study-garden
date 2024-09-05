@@ -8,9 +8,9 @@ export default {
   theme: {
     extend: {
       colors: {
-        celeste: '#acdef2',
-        azul: '#1a3551',
-        naranja: '#f28705',
+        colorPrincipal: '#acdef2',
+        colorSecundario: '#1a3551',
+        colorAcento: '#f28705',
         claro: '#f3f4f6'
       },
       keyframes: {

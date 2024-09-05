@@ -32,8 +32,8 @@ const HomePage = () => {
             name: "pianoMelody",
             value: "pianoMelody",
             label: "Melodía de piano",
-            source:
-                "https://cdn.pixabay.com/download/audio/2024/04/12/audio_85e1122b59.mp3",
+            source: "/audios/piano.mp3",
+            // source: "https://cdn.pixabay.com/download/audio/2024/04/12/audio_85e1122b59.mp3",
         },
     };
 
@@ -73,8 +73,7 @@ const HomePage = () => {
                             name: "pianoMelody",
                             value: "pianoMelody",
                             label: "Melodía de piano",
-                            source:
-                                "https://cdn.pixabay.com/download/audio/2024/04/12/audio_85e1122b59.mp3",
+                            source: "/audios/piano.mp3",
                         },
                     },
                     {
@@ -89,8 +88,7 @@ const HomePage = () => {
                             name: "guitarMelody",
                             value: "guitarMelody",
                             label: "Melodía de guitarra",
-                            source:
-                                "https://cdn.pixabay.com/download/audio/2023/06/19/audio_871c28dde0.mp3",
+                            source: "/audios/guitar.mp3",
                         },
                     },
                     {
@@ -105,8 +103,7 @@ const HomePage = () => {
                             name: "musicLoFi",
                             value: "musicLoFi",
                             label: "Música Lo-Fi",
-                            source:
-                                "https://cdn.pixabay.com/audio/2024/01/15/audio_9914e58808.mp3",
+                            source: "/audios/lofi.mp3",
                         },
                     },
                 ],
@@ -141,8 +138,7 @@ const HomePage = () => {
                             name: "pianoMelody",
                             value: "pianoMelody",
                             label: "Melodía de piano",
-                            source:
-                                "https://cdn.pixabay.com/download/audio/2024/04/12/audio_85e1122b59.mp3",
+                            source: "/audios/piano.mp3",
                         },
                     },
                     {
@@ -157,8 +153,7 @@ const HomePage = () => {
                             name: "guitarMelody",
                             value: "guitarMelody",
                             label: "Melodía de guitarra",
-                            source:
-                                "https://cdn.pixabay.com/download/audio/2023/06/19/audio_871c28dde0.mp3",
+                            source: "/audios/guitar.mp3",
                         },
                     },
                     {
@@ -173,8 +168,7 @@ const HomePage = () => {
                             name: "musicLoFi",
                             value: "musicLoFi",
                             label: "Música Lo-Fi",
-                            source:
-                                "https://cdn.pixabay.com/audio/2024/01/15/audio_9914e58808.mp3",
+                            source: "/audios/lofi.mp3",
                         },
                     },
                 ],
@@ -254,7 +248,7 @@ const HomePage = () => {
                 icon: "warning",
                 iconColor: "orange",
                 customClass: {
-                    confirmButton: "text-black font-medium bg-naranja rounded-lg w-full py-2 px-4 m-1",
+                    confirmButton: "text-black font-medium bg-colorAcento rounded-lg w-full py-2 px-4 m-1",
                     cancelButton: "text-black font-medium rounded-lg w-full border border-black py-2 px-4 m-1"
                 },
                 buttonsStyling: false,
@@ -281,13 +275,13 @@ const HomePage = () => {
         <section className="h-full">
             <AnimatedPage>
                 <div className="relative overflow-hidden p-4 h-full">
-                    <div className="absolute top-1/2 -right-1/2 -left-1/2 mx-auto w-[150%] h-screen rounded-full bg-celeste -z-10"></div>
+                    <div className="absolute top-1/2 -right-1/2 -left-1/2 mx-auto w-[150%] h-screen rounded-full bg-colorPrincipal -z-10"></div>
                     <div className="flex flex-col max-w-md h-full mx-auto">
                         <div className="flex flex-row justify-between">
                             <Link to="/newtask/taskconfiguration">
                                 <button className="content-center">
                                     <svg
-                                        className="w-10 aspect-square fill-naranja mx-auto"
+                                        className="w-10 aspect-square fill-colorAcento mx-auto"
                                         xmlns="http://www.w3.org/2000/svg"
                                         viewBox="0 -960 960 960"
                                     >
@@ -297,12 +291,12 @@ const HomePage = () => {
                             </Link>
                             <div>
                                 {/* <button
-                                    className="bg-celeste rounded-full p-2 ml-2"
+                                    className="bg-colorPrincipal rounded-full p-2 ml-2"
                                     onClick={toggleDoNotDisturb}
                                 >
                                     {doNotDisturbOn ? (
                                         <svg
-                                            className="w-8 aspect-square fill-azul mx-auto"
+                                            className="w-8 aspect-square fill-colorSecundario mx-auto"
                                             xmlns="http://www.w3.org/2000/svg"
                                             viewBox="0 -960 960 960"
                                         >
@@ -310,7 +304,7 @@ const HomePage = () => {
                                         </svg>
                                     ) : (
                                         <svg
-                                            className="w-8 aspect-square fill-azul mx-auto"
+                                            className="w-8 aspect-square fill-colorSecundario mx-auto"
                                             xmlns="http://www.w3.org/2000/svg"
                                             viewBox="0 -960 960 960"
                                         >
@@ -319,12 +313,12 @@ const HomePage = () => {
                                     )}
                                 </button> */}
                                 <button
-                                    className="bg-celeste rounded-full p-2 ml-2"
+                                    className="bg-colorPrincipal rounded-full p-2 ml-2"
                                     onClick={toggleMute}
                                 >
                                     {isMuted ? (
                                         <svg
-                                            className="w-8 aspect-square fill-azul mx-auto"
+                                            className="w-8 aspect-square fill-colorSecundario mx-auto"
                                             xmlns="http://www.w3.org/2000/svg"
                                             viewBox="0 -960 960 960"
                                         >
@@ -332,7 +326,7 @@ const HomePage = () => {
                                         </svg>
                                     ) : (
                                         <svg
-                                            className="w-8 aspect-square fill-azul mx-auto"
+                                            className="w-8 aspect-square fill-colorSecundario mx-auto"
                                             xmlns="http://www.w3.org/2000/svg"
                                             viewBox="0 -960 960 960"
                                         >
@@ -399,7 +393,7 @@ const HomePage = () => {
                         <div className="[flex-grow:2] flex justify-center items-center mb-8">
                             {taskRunning ? (
                                 <motion.button
-                                    className="flex justify-center items-center gap-3 w-2/3 bg-naranja rounded-full drop-shadow-lg p-4"
+                                    className="flex justify-center items-center gap-3 w-2/3 bg-colorAcento rounded-full drop-shadow-lg p-4"
                                     type="button"
                                     whileHover={{ scale: 1.1 }}
                                     whileTap={{ scale: 0.9 }}
@@ -419,7 +413,7 @@ const HomePage = () => {
                                 </motion.button>
                             ) : (
                                 <motion.button
-                                    className="flex justify-center items-center gap-3 w-2/3 bg-naranja rounded-full drop-shadow-lg p-4"
+                                    className="flex justify-center items-center gap-3 w-2/3 bg-colorAcento rounded-full drop-shadow-lg p-4"
                                     type="button"
                                     whileHover={{ scale: 1.03 }}
                                     whileTap={{ scale: 0.97 }}

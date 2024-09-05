@@ -62,21 +62,21 @@ const TaskConfiguration = ({
       } */
 
     return (
-        <section className="h-full bg-celeste">
+        <section className="h-full bg-colorPrincipal">
             <AnimatedPage>
                 <div className="w-full">
                     <div className="max-w-md h-full mx-auto">
                         <form onSubmit={handleSubmit} className="p-3">
-                            <div className="rounded-3xl shadow-lg bg-white *:border-b *:border-celeste py-2">
+                            <div className="rounded-3xl shadow-lg bg-white *:border-b *:border-colorPrincipal py-2">
                                 <div className="last:border-none p-2">
-                                    <h3 className="text-azul text-center text-xl font-semibold mb-2">
+                                    <h3 className="text-colorSecundario text-center text-xl font-semibold mb-2">
                                         Planta a dar vida
                                     </h3>
                                     <div className="grid grid-cols-3 gap-4">
                                         {plants?.map((plant) => (
                                             <div key={plant.name} className="relative w-full max-w-24 aspect-square max-h-24 rounded-full mx-auto">
                                                 <label
-                                                    className="group block w-full h-full rounded-full bg-celeste has-[:checked]:bg-naranja has-[:checked]:scale-110 has-[:checked]:shadow-lg p-2"
+                                                    className="group block w-full h-full rounded-full bg-colorPrincipal has-[:checked]:bg-colorAcento has-[:checked]:scale-110 has-[:checked]:shadow-lg p-2"
                                                 >
                                                     <Lottie
                                                         className="h-full mx-auto"
@@ -84,7 +84,7 @@ const TaskConfiguration = ({
                                                         loop={true}
                                                         speed={plant.speed}
                                                     />
-                                                    <div className="absolute top-0 -right-1 hidden group-has-[:checked]:block bg-azul rounded-full mr-2">
+                                                    <div className="absolute top-0 -right-1 hidden group-has-[:checked]:block bg-colorSecundario rounded-full mr-2">
                                                         <svg
                                                             className="w-6 aspect-square fill-white z-10"
                                                             xmlns="http://www.w3.org/2000/svg"
@@ -106,17 +106,17 @@ const TaskConfiguration = ({
                                     </div>
                                 </div>
                                 <div className="last:border-none p-2">
-                                    <h3 className="text-azul text-center text-xl font-semibold mb-2">
+                                    <h3 className="text-colorSecundario text-center text-xl font-semibold mb-2">
                                         Tarea a realizar
                                     </h3>
                                     <div className="flex justify-around gap-3 mb-2 px-2">
                                         {taskTitles?.map((title, index) => (
                                             <div key={index} className="w-1/3">
                                                 <label
-                                                    className="group flex items-center justify-center w-full h-10 bg-azul has-[:checked]:bg-naranja rounded-full drop-shadow-[0_3px_3px_rgba(0,0,0,0.15)] p-2"
+                                                    className="group flex items-center justify-center w-full h-10 bg-colorSecundario has-[:checked]:bg-colorAcento rounded-full drop-shadow-[0_3px_3px_rgba(0,0,0,0.15)] p-2"
                                                     htmlFor={title}
                                                 >
-                                                    <div className="hidden w-fit group-has-[:checked]:block bg-azul rounded-full mr-2">
+                                                    <div className="hidden w-fit group-has-[:checked]:block bg-colorSecundario rounded-full mr-2">
                                                         <svg
                                                             className="w-6 aspect-square fill-white z-10"
                                                             xmlns="http://www.w3.org/2000/svg"
@@ -125,7 +125,7 @@ const TaskConfiguration = ({
                                                             <path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z" />
                                                         </svg>
                                                     </div>
-                                                    <div className="text-white text-center text-xs [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:2] overflow-hidden text-ellipsis group-has-[:checked]:text-azul">
+                                                    <div className="text-white text-center text-xs [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:2] overflow-hidden text-ellipsis group-has-[:checked]:text-colorSecundario">
                                                         {title}
                                                     </div>
                                                     <input
@@ -146,23 +146,23 @@ const TaskConfiguration = ({
                                     >
                                         <button
                                             type="button"
-                                            className="flex items-center justify-center gap-2 w-full bg-celeste rounded-full drop-shadow-md p-2"
+                                            className="flex items-center justify-center gap-2 w-full bg-colorPrincipal rounded-full drop-shadow-md p-2"
                                         >
                                             <svg
-                                                className="w-4 fill-azul"
+                                                className="w-4 fill-colorSecundario"
                                                 xmlns="http://www.w3.org/2000/svg"
                                                 viewBox="0 -960 960 960"
                                             >
                                                 <path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z" />
                                             </svg>
-                                            <span className="text-azul font-semibold uppercase">
+                                            <span className="text-colorSecundario font-semibold uppercase">
                                                 nueva tarea
                                             </span>
                                         </button>
                                     </Link>
                                 </div>
                                 <div className="last:border-none p-2">
-                                    <h3 className="text-azul text-center text-xl font-semibold mb-2">
+                                    <h3 className="text-colorSecundario text-center text-xl font-semibold mb-2">
                                         Duración de la tarea
                                     </h3>
                                     <div className="w-1/2 flex justify-between items-center mx-auto">
@@ -200,7 +200,7 @@ const TaskConfiguration = ({
                                     </div>
                                 </div>
                                 <div className="last:border-none p-2">
-                                    <h3 className="text-azul text-center text-xl font-semibold mb-2">
+                                    <h3 className="text-colorSecundario text-center text-xl font-semibold mb-2">
                                         Música de ambiente
                                     </h3>
                                     <Link
@@ -209,16 +209,16 @@ const TaskConfiguration = ({
                                     >
                                         <button
                                             type="button"
-                                            className="flex items-center justify-center gap-2 w-full bg-celeste rounded-full shadow-lg p-2"
+                                            className="flex items-center justify-center gap-2 w-full bg-colorPrincipal rounded-full shadow-lg p-2"
                                         >
                                             <svg
-                                                className="w-4 fill-azul"
+                                                className="w-4 fill-colorSecundario"
                                                 xmlns="http://www.w3.org/2000/svg"
                                                 viewBox="0 -960 960 960"
                                             >
                                                 <path d="M400-120q-66 0-113-47t-47-113q0-66 47-113t113-47q23 0 42.5 5.5T480-418v-422h240v160H560v400q0 66-47 113t-113 47Z" />
                                             </svg>
-                                            <span className="text-azul font-semibold uppercase">
+                                            <span className="text-colorSecundario font-semibold uppercase">
                                                 {selectedAudio?.label}
                                             </span>
                                         </button>
@@ -229,7 +229,7 @@ const TaskConfiguration = ({
                                 <div className="block w-9/10 mx-auto">
                                     <motion.button
                                         type="submit"
-                                        className="text-center w-full bg-naranja rounded-full drop-shadow-[0_3px_3px_rgba(0,0,0,0.25)] p-4"
+                                        className="text-center w-full bg-colorAcento rounded-full drop-shadow-[0_3px_3px_rgba(0,0,0,0.25)] p-4"
                                         whileTap={{ scale: 0.97 }}
                                         transition={{ type: "spring", stiffness: 400, damping: 17 }}
                                     >

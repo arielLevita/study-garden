@@ -49,17 +49,17 @@ const SavedTasks = () => {
                                         justify-between 
                                         w-full 
                                         h-56 
-                                        bg-celeste 
+                                        bg-colorPrincipal 
                                         rounded-lg 
                                         border 
                                         border-gray-500 
-                                        has-[:checked]:bg-naranja 
+                                        has-[:checked]:bg-colorAcento 
                                         has-[:checked]:scale-105 
                                         has-[:checked]:shadow-lg 
                                         drop-shadow-md
                                         p-2"
                                     >
-                                        <div className="absolute -top-2 -right-4 hidden group-has-[:checked]:block bg-azul rounded-full mr-2">
+                                        <div className="absolute -top-2 -right-4 hidden group-has-[:checked]:block bg-colorSecundario rounded-full mr-2">
                                             <svg
                                                 className="w-6 aspect-square fill-white z-10"
                                                 xmlns="http://www.w3.org/2000/svg"
@@ -79,7 +79,7 @@ const SavedTasks = () => {
                                         <h4 className="text-lg break-words">{task.title}</h4>
                                         <div>
                                             <Lottie
-                                                className="w-2/3 aspect-square bg-azul rounded-full p-2 mx-auto"
+                                                className="w-2/3 aspect-square bg-colorSecundario rounded-full p-2 mx-auto"
                                                 animationData={task.plant.plant}
                                                 loop={true}
                                                 speed={task.plant.speed}
@@ -95,19 +95,19 @@ const SavedTasks = () => {
                         <div className="w-full flex justify-around items-center bg-white py-4">
                             <button
                                 type="button"
-                                className="w-2/5 bg-white rounded-full border border-azul p-2"
+                                className="w-2/5 bg-white rounded-full border border-colorSecundario p-2"
                                 onClick={handleDeleteTask}
                             >
-                                <span className="text-center uppercase text-azul font-semibold">
+                                <span className="text-center uppercase text-colorSecundario font-semibold">
                                     eliminar
                                 </span>
                             </button>
                             <button
                                 type="button"
-                                className="w-2/5 bg-naranja rounded-full p-2"
+                                className="w-2/5 bg-colorAcento rounded-full p-2"
                                 onClick={handleLoadTask}
                             >
-                                <span className="text-center uppercase text-azul font-semibold">
+                                <span className="text-center uppercase text-colorSecundario font-semibold">
                                     cargar
                                 </span>
                             </button>

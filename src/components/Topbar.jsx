@@ -45,7 +45,7 @@ const Topbar = () => {
     }, [location])
 
     return (
-        <div className='flex items-center h-20 w-full bg-azul'>
+        <div className='flex items-center h-20 w-full bg-colorSecundario'>
             <div className="max-w-lg w-full mx-auto">
                 <div className="flex justify-start items-center p-2">
                     {
