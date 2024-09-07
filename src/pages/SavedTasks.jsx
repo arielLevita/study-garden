@@ -95,6 +95,7 @@ const SavedTasks = () => {
                         <div className="w-full flex justify-around items-center bg-white py-4">
                             <button
                                 type="button"
+                                aria-label="eliminar"
                                 className="w-2/5 bg-white rounded-full border border-colorSecundario p-2"
                                 onClick={handleDeleteTask}
                             >
@@ -104,6 +105,7 @@ const SavedTasks = () => {
                             </button>
                             <button
                                 type="button"
+                                aria-label="cargar"
                                 className="w-2/5 bg-colorAcento rounded-full p-2"
                                 onClick={handleLoadTask}
                             >

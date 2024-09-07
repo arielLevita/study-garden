@@ -12,7 +12,7 @@ const MenuToggle = ({ toggle }) => {
     );
 
     return (
-        <button onClick={toggle}>
+        <button onClick={toggle} aria-label="mostrar menu">
             <svg width="23" height="18" viewBox="0 0 23 18">
                 <Path
                     d="M 2 2.5 L 20 2.5"

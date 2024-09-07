@@ -146,6 +146,7 @@ const TaskConfiguration = ({
                                     >
                                         <button
                                             type="button"
+                                            aria-label="nueva tarea"
                                             className="flex items-center justify-center gap-2 w-full bg-colorPrincipal rounded-full drop-shadow-md p-2"
                                         >
                                             <svg
@@ -168,6 +169,7 @@ const TaskConfiguration = ({
                                     <div className="w-1/2 flex justify-between items-center mx-auto">
                                         <motion.button
                                             type="button"
+                                            aria-label="restar cinco minutos"
                                             onClick={() => adjustTimerAmount(-5)}
                                             className="rounded-full p-2"
                                             whileTap={{ backgroundColor: 'rgba(0,0,0,0.5)' }}
@@ -185,6 +187,7 @@ const TaskConfiguration = ({
                                         </span>
                                         <motion.button
                                             type="button"
+                                            aria-label="sumar cinco minutos"
                                             onClick={() => adjustTimerAmount(5)}
                                             className="rounded-full p-2"
                                             whileTap={{ backgroundColor: 'rgba(0,0,0,0.5)' }}
@@ -209,6 +212,7 @@ const TaskConfiguration = ({
                                     >
                                         <button
                                             type="button"
+                                            aria-label="elegir audio"
                                             className="flex items-center justify-center gap-2 w-full bg-colorPrincipal rounded-full shadow-lg p-2"
                                         >
                                             <svg
@@ -229,6 +233,7 @@ const TaskConfiguration = ({
                                 <div className="block w-9/10 mx-auto">
                                     <motion.button
                                         type="submit"
+                                        aria-label="guardar configuración"
                                         className="text-center w-full bg-colorAcento rounded-full drop-shadow-[0_3px_3px_rgba(0,0,0,0.25)] p-4"
                                         whileTap={{ scale: 0.97 }}
                                         transition={{ type: "spring", stiffness: 400, damping: 17 }}

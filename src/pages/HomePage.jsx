@@ -279,7 +279,7 @@ const HomePage = () => {
                     <div className="flex flex-col max-w-md h-full mx-auto">
                         <div className="flex flex-row justify-between">
                             <Link to="/newtask/taskconfiguration">
-                                <button className="content-center">
+                                <button className="content-center" aria-label="editar tarea">
                                     <svg
                                         className="w-10 aspect-square fill-colorAcento mx-auto"
                                         xmlns="http://www.w3.org/2000/svg"
@@ -290,30 +290,9 @@ const HomePage = () => {
                                 </button>
                             </Link>
                             <div>
-                                {/* <button
-                                    className="bg-colorPrincipal rounded-full p-2 ml-2"
-                                    onClick={toggleDoNotDisturb}
-                                >
-                                    {doNotDisturbOn ? (
-                                        <svg
-                                            className="w-8 aspect-square fill-colorSecundario mx-auto"
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            viewBox="0 -960 960 960"
-                                        >
-                                            <path d="m635-440-80-80h125v80h-45Zm-228-80v80H280v-80h127ZM819-28 701-146q-48 32-103.5 49T480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-62 17-117.5T146-701L27-820l57-57L876-85l-57 57ZM480-160q45 0 85.5-12t76.5-33L205-642q-21 36-33 76.5T160-480q0 133 93.5 226.5T480-160Zm335-100-59-59q21-35 32.5-75.5T800-480q0-133-93.5-226.5T480-800q-45 0-85.5 11.5T319-756l-59-59q48-31 103.5-48T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 61-17 116.5T815-260ZM538-538ZM424-424Z" />
-                                        </svg>
-                                    ) : (
-                                        <svg
-                                            className="w-8 aspect-square fill-colorSecundario mx-auto"
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            viewBox="0 -960 960 960"
-                                        >
-                                            <path d="M280-440h400v-80H280v80ZM480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z" />
-                                        </svg>
-                                    )}
-                                </button> */}
                                 <button
                                     className="bg-colorPrincipal rounded-full p-2 ml-2"
+                                    aria-label="mute"
                                     onClick={toggleMute}
                                 >
                                     {isMuted ? (
@@ -353,6 +332,7 @@ const HomePage = () => {
                         <div className="flex justify-center items-center my-4">
                             <motion.button
                                 type="button"
+                                aria-label="restar cinco minutos"
                                 onClick={() => adjustTimerAmount(-5)}
                                 className="rounded-full p-2"
                                 whileTap={{ backgroundColor: 'rgba(0,0,0,0.5)' }}
@@ -377,6 +357,7 @@ const HomePage = () => {
                             <motion.button
                                 type="button"
                                 onClick={() => adjustTimerAmount(5)}
+                                aria-label="sumar cinco minutos"
                                 className="rounded-full p-2"
                                 whileTap={{ backgroundColor: 'rgba(0,0,0,0.5)' }}
                             >
@@ -395,6 +376,7 @@ const HomePage = () => {
                                 <motion.button
                                     className="flex justify-center items-center gap-3 w-2/3 bg-colorAcento rounded-full drop-shadow-lg p-4"
                                     type="button"
+                                    aria-label="pausar"
                                     whileHover={{ scale: 1.1 }}
                                     whileTap={{ scale: 0.9 }}
                                     transition={{ type: "spring", stiffness: 400, damping: 17 }}
@@ -415,6 +397,7 @@ const HomePage = () => {
                                 <motion.button
                                     className="flex justify-center items-center gap-3 w-2/3 bg-colorAcento rounded-full drop-shadow-lg p-4"
                                     type="button"
+                                    aria-label="iniciar"
                                     whileHover={{ scale: 1.03 }}
                                     whileTap={{ scale: 0.97 }}
                                     transition={{ type: "spring", stiffness: 400, damping: 17 }}

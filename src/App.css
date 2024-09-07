@@ -1,3 +1,11 @@
+@font-face {
+  font-family: 'Roboto';
+  /* Replace with your font name */
+  src: url('fonts/Roboto.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
 *,
 *::before,
 *::after {
