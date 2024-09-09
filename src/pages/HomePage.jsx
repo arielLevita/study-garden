@@ -278,8 +278,8 @@ const HomePage = () => {
                     <div className="absolute top-1/2 -right-1/2 -left-1/2 mx-auto w-[150%] h-screen rounded-full bg-colorPrincipal -z-10"></div>
                     <div className="flex flex-col max-w-md h-full mx-auto">
                         <div className="flex flex-row justify-between">
-                            <Link to="/newtask/taskconfiguration">
-                                <button className="content-center" aria-label="editar tarea">
+                            <Link to="/newtask/taskconfiguration" className="content-center w-14 h-14 p-2">
+                                <button className="content-center w-12 h-12" aria-label="editar tarea">
                                     <svg
                                         className="w-10 aspect-square fill-colorAcento mx-auto"
                                         xmlns="http://www.w3.org/2000/svg"
@@ -289,9 +289,9 @@ const HomePage = () => {
                                     </svg>
                                 </button>
                             </Link>
-                            <div>
+                            <div className="content-center p-2">
                                 <button
-                                    className="bg-colorPrincipal rounded-full p-2 ml-2"
+                                    className="bg-colorPrincipal w-12 rounded-full p-2 ml-2"
                                     aria-label="mute"
                                     onClick={toggleMute}
                                 >

@@ -36,7 +36,9 @@ const Navbar = () => {
                 <ul className="flex p-4">
                     {
                         navbarLinks.map((link) => (
-                            <li className="w-1/5" key={link.name}>
+                            link.name == ''
+                            ? <li className="w-1/5" key={link.name}></li>
+                            : <li className="w-1/5" key={link.name}>
                                 <NavLink
                                     to={link.to}
                                     className={({ isActive, isPending }) =>

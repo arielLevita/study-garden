@@ -22,7 +22,7 @@ const TaskDescriptionPage = ({
                         <div className="flex flex-col justify-between h-full">
                             <div>
                                 <div className="mb-4">
-                                    <h3 className='text-colorSecundario text-xl font-semibold mb-1'>Nombre de la tarea</h3>
+                                    <label htmlFor='currentTitle' className='text-colorSecundario text-xl font-semibold mb-1'>Nombre de la tarea</label>
                                     <input
                                         className="bg-white rounded-lg w-full py-1 px-2"
                                         type="text"
@@ -33,7 +33,7 @@ const TaskDescriptionPage = ({
                                     />
                                 </div>
                                 <div className="mb-4">
-                                    <h3 className='text-colorSecundario text-xl font-semibold mb-1'>Descripción</h3>
+                                    <label htmlFor='currentDescription' className='text-colorSecundario text-xl font-semibold mb-1'>Descripción</label>
                                     <textarea
                                         className="bg-white rounded-lg w-full px-2 py-1"
                                         name="currentDescription"
