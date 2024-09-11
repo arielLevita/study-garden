@@ -12,7 +12,7 @@ function useMenuAnimation(isOpen) {
                 [
                     "nav",
                     { transform: "translateX(0%)" },
-                    { ease: [0.08, 0.65, 0.53, 0.96], duration: 0.4 }
+                    { ease: [0.08, 0.65, 0.53, 0.96], duration: 0.2 }
                 ],
                 [
                     "li",

@@ -9,7 +9,7 @@ const HomeMenu = () => {
                 <li className="block w-full origin-right will-change-[transform,opacity,filter] list-none border-b border-white pb-8 mb-4">
                     <h2 className="text-colorSecundario text-center text-3xl font-semibold mb-2">Study Garden</h2>
                     <div>
-                        <img src="./imagen-icono.png" alt="" className="w-16 h-16 mx-auto" />
+                        <img src="./imagen-icono.png" alt="logo de aplicación" loading="lazy" className="w-16 h-16 mx-auto" />
                     </div>
                 </li>
                 <li className="flex justify-between items-center w-full origin-right will-change-[transform,opacity,filter] list-none">

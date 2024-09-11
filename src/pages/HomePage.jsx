@@ -21,21 +21,6 @@ import plant07 from "../assets/AnimatedPlants/plant07-animation.json";
 import plant09 from "../assets/AnimatedPlants/plant09-animation.json";
 
 const HomePage = () => {
-    const defaultTask = {
-        id: 1,
-        title: "Estudiando",
-        description: "",
-        plant: { plant: plant01, name: plant01.nm, speed: 0.25 },
-        timer: 40,
-        audio: {
-            id: "pianoMelody",
-            name: "pianoMelody",
-            value: "pianoMelody",
-            label: "Melodía de piano",
-            source: "/audios/piano.mp3",
-            // source: "https://cdn.pixabay.com/download/audio/2024/04/12/audio_85e1122b59.mp3",
-        },
-    };
 
     const [isMuted, setIsMuted] = useState(false);
     // const [doNotDisturbOn, setDoNotDisturbOn] = useState(false);
@@ -54,132 +39,87 @@ const HomePage = () => {
     const [taskRunning, setTaskRunning] = useState(false);
 
     useEffect(() => {
+        const defaultTask = {
+            id: 1,
+            title: "Estudiando",
+            description: "",
+            plant: { plant: plant01, name: plant01.nm, speed: 0.25 },
+            timer: 40,
+            audio: {
+                id: "pianoMelody",
+                name: "pianoMelody",
+                value: "pianoMelody",
+                label: "Melodía de piano",
+                source: "/audios/piano.mp3",
+            },
+        };
+
+        const today = new Date().toISOString().split("T")[0];
+
+        const defaultNewTasks = {
+            currentTask: defaultTask,
+            otherTasks: [
+                {
+                    id: 1,
+                    title: "Estudiando",
+                    description:
+                        "Esta tarea exite por defecto. Puede ser eliminada en la página de tareas guardadas.",
+                    plant: { plant: plant01, name: plant01.nm, speed: 0.25 },
+                    timer: 40,
+                    audio: {
+                        id: "pianoMelody",
+                        name: "pianoMelody",
+                        value: "pianoMelody",
+                        label: "Melodía de piano",
+                        source: "/audios/piano.mp3",
+                    },
+                },
+                {
+                    id: 2,
+                    title: "Trabajando",
+                    description:
+                        "Esta tarea exite por defecto. Puede ser eliminada en la página de tareas guardadas.",
+                    plant: { plant: plant04, name: plant04.nm, speed: 0.25 },
+                    timer: 35,
+                    audio: {
+                        id: "guitarMelody",
+                        name: "guitarMelody",
+                        value: "guitarMelody",
+                        label: "Melodía de guitarra",
+                        source: "/audios/guitar.mp3",
+                    },
+                },
+                {
+                    id: 3,
+                    title: "Limpiando",
+                    description:
+                        "Esta tarea exite por defecto. Puede ser eliminada en la página de tareas guardadas.",
+                    plant: { plant: plant01, name: plant01.nm, speed: 0.25 },
+                    timer: 25,
+                    audio: {
+                        id: "musicLoFi",
+                        name: "musicLoFi",
+                        value: "musicLoFi",
+                        label: "Música Lo-Fi",
+                        source: "/audios/lofi.mp3",
+                    },
+                },
+            ],
+            records: [{ date: today, minutes: 0 }],
+            showNotifications: true,
+        };
+
         const tasks = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
+
         if (!tasks) {
-            const today = new Date().toISOString().split("T")[0];
-            setCurrentTask(defaultTask);
-            const newTasks = {
-                currentTask: defaultTask,
-                otherTasks: [
-                    {
-                        id: 1,
-                        title: "Estudiando",
-                        description:
-                            "Esta tarea exite por defecto. Puede ser eliminada en la página de tareas guardadas.",
-                        plant: { plant: plant01, name: plant01.nm, speed: 0.25 },
-                        timer: 40,
-                        audio: {
-                            id: "pianoMelody",
-                            name: "pianoMelody",
-                            value: "pianoMelody",
-                            label: "Melodía de piano",
-                            source: "/audios/piano.mp3",
-                        },
-                    },
-                    {
-                        id: 2,
-                        title: "Trabajando",
-                        description:
-                            "Esta tarea exite por defecto. Puede ser eliminada en la página de tareas guardadas.",
-                        plant: { plant: plant04, name: plant04.nm, speed: 0.25 },
-                        timer: 35,
-                        audio: {
-                            id: "guitarMelody",
-                            name: "guitarMelody",
-                            value: "guitarMelody",
-                            label: "Melodía de guitarra",
-                            source: "/audios/guitar.mp3",
-                        },
-                    },
-                    {
-                        id: 3,
-                        title: "Limpiando",
-                        description:
-                            "Esta tarea exite por defecto. Puede ser eliminada en la página de tareas guardadas.",
-                        plant: { plant: plant01, name: plant01.nm, speed: 0.25 },
-                        timer: 25,
-                        audio: {
-                            id: "musicLoFi",
-                            name: "musicLoFi",
-                            value: "musicLoFi",
-                            label: "Música Lo-Fi",
-                            source: "/audios/lofi.mp3",
-                        },
-                    },
-                ],
-                records: [{ date: today, minutes: 0 }],
-                showNotifications: true,
-            };
-            if (today) {
-                localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(newTasks));
-            }
-            setTimerValue(defaultTask.timer);
-            setInitialRecords(newTasks.records);
+            setDefaultValues(defaultTask, defaultNewTasks, today);
         } else if (tasks.currentTask && tasks.otherTasks && tasks.records && tasks.showNotifications) {
             setCurrentTask(tasks.currentTask);
             setInitialRecords(tasks.records);
             setTimerValue(tasks.currentTask.timer);
         } else {
             localStorage.removeItem(LOCAL_STORAGE_KEY);
-            const today = new Date().toISOString().split("T")[0];
-            setCurrentTask(defaultTask);
-            const newTasks = {
-                currentTask: defaultTask,
-                otherTasks: [
-                    {
-                        id: 1,
-                        title: "Estudiando",
-                        description:
-                            "Esta tarea exite por defecto. Puede ser eliminada en la página de tareas guardadas.",
-                        plant: { plant: plant01, name: plant01.nm, speed: 0.25 },
-                        timer: 40,
-                        audio: {
-                            id: "pianoMelody",
-                            name: "pianoMelody",
-                            value: "pianoMelody",
-                            label: "Melodía de piano",
-                            source: "/audios/piano.mp3",
-                        },
-                    },
-                    {
-                        id: 2,
-                        title: "Trabajando",
-                        description:
-                            "Esta tarea exite por defecto. Puede ser eliminada en la página de tareas guardadas.",
-                        plant: { plant: plant04, name: plant04.nm, speed: 0.25 },
-                        timer: 35,
-                        audio: {
-                            id: "guitarMelody",
-                            name: "guitarMelody",
-                            value: "guitarMelody",
-                            label: "Melodía de guitarra",
-                            source: "/audios/guitar.mp3",
-                        },
-                    },
-                    {
-                        id: 3,
-                        title: "Limpiando",
-                        description:
-                            "Esta tarea exite por defecto. Puede ser eliminada en la página de tareas guardadas.",
-                        plant: { plant: plant01, name: plant01.nm, speed: 0.25 },
-                        timer: 25,
-                        audio: {
-                            id: "musicLoFi",
-                            name: "musicLoFi",
-                            value: "musicLoFi",
-                            label: "Música Lo-Fi",
-                            source: "/audios/lofi.mp3",
-                        },
-                    },
-                ],
-                records: [{ date: today, minutes: 0 }],
-                showNotifications: true,
-            };
-            if (today) {
-                localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(newTasks));
-            }
-            setTimerValue(defaultTask.timer);
-            setInitialRecords(newTasks.records);
+            setDefaultValues(defaultTask, defaultNewTasks, today);
         }
     }, []);
 
@@ -187,13 +127,23 @@ const HomePage = () => {
         lottieRef.current.pause();
     }, [currentTask])
 
+    const setDefaultValues = (defaultTask, defaultNewTasks, today) => {
+        setCurrentTask(defaultTask);
+        const newTasks = defaultNewTasks;
+        if (today) {
+            localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(newTasks));
+        }
+        setTimerValue(defaultTask.timer);
+        setInitialRecords(newTasks.records);
+    }
+
     const playAudio = () => {
         toggleTaskRunning();
         const audioElement = audioRef.current;
         if (audioElement && currentTask.audio.source) {
             audioElement.pause();
             audioElement.src = currentTask.audio.source;
-            audioElement.load(); 
+            audioElement.load();
             audioElement.play().catch((error) => {
                 console.error("Error playing audio:", error);
             });
@@ -270,6 +220,8 @@ const HomePage = () => {
         lottieRef.current.pause();
         pauseAudio();
     };
+
+    // TODO PASAR EL RELOJ Y TODO A UN COMPONENTE APARTE
 
     return (
         <section className="h-full">
