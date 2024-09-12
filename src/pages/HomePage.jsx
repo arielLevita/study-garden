@@ -228,7 +228,7 @@ const HomePage = () => {
             <AnimatedPage>
                 <div className="relative overflow-hidden p-4 h-full">
                     <div className="absolute top-1/2 -right-1/2 -left-1/2 mx-auto w-[150%] h-screen rounded-full bg-colorPrincipal -z-10"></div>
-                    <div className="flex flex-col max-w-md h-full mx-auto">
+                    <div className="flex flex-col overflow-scroll max-w-md h-full mx-auto">
                         <div className="flex flex-row justify-between">
                             <Link to="/newtask/taskconfiguration" className="content-center w-14 h-14 p-2">
                                 <button className="content-center w-12 h-12" aria-label="editar tarea">
