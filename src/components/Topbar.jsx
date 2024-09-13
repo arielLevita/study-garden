@@ -1,9 +1,11 @@
+/* eslint-disable react/prop-types */
 import { useState, useEffect } from "react"
+import { motion } from "framer-motion"
 import { useLocation } from "react-router-dom"
 import HomeMenuButton from "./HomeMenuButton"
 import GoBackButton from "./GoBackButton"
 
-const Topbar = () => {
+const Topbar = ({ isInstalled, handleInstall }) => {
 
     const [currentPath, setCurrentPath] = useState('')
     const location = useLocation();
@@ -46,16 +48,29 @@ const Topbar = () => {
 
     return (
         <div className='flex items-center h-20 w-full bg-colorSecundario'>
-            <div className="max-w-lg w-full mx-auto">
+            <div className="flex items-center justify-between max-w-lg w-full mx-auto pr-2">
                 <div className="flex justify-start items-center p-2">
                     {
-                        location.pathname == '/' 
-                        ? <HomeMenuButton />
-                        : <GoBackButton /> 
+                        location.pathname == '/'
+                            ? <HomeMenuButton />
+                            : <GoBackButton />
                     }
                     <div>
                         <button type='button' className="text-white text-2xl mx-4">{currentPath}</button>
                     </div>
+                </div>
+                <div>
+                    {
+                        !isInstalled && 
+                        <motion.button 
+                            onClick={handleInstall} 
+                            className='w-fit max-w-24 text-sm text-center text-colorPrincipal italic border border-colorPrincipal border-opacity-50 bg-colorSecundario rounded-full [-webkit-line-clamp:2] shadow-[1px_2px_2px_rgba(240,240,240,0.3)] px-2 py-1 mx-4'
+                            whileTap={{ scale: 0.99, translateX: 2, translateY: 2 }}
+                            transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                        >
+                            Instalar App
+                        </motion.button>
+                    }
                 </div>
             </div>
         </div>
