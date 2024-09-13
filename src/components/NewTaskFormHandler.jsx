@@ -29,7 +29,6 @@ const NewTaskFormHandler = () => {
             value: 'musicLoFi',
             label: 'Música Lo-Fi',
             source: '/audios/lofi.mp3'
-            // source: 'https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3'
         },
         {
             id: 'pianoMelody',
@@ -37,7 +36,6 @@ const NewTaskFormHandler = () => {
             value: 'pianoMelody',
             label: 'Melodía de piano',
             source: '/audios/piano.mp3'
-            // source: 'https://cdn.pixabay.com/download/audio/2024/04/12/audio_85e1122b59.mp3'
         },
         {
             id: 'guitarMelody',
@@ -45,7 +43,6 @@ const NewTaskFormHandler = () => {
             value: 'guitarMelody',
             label: 'Melodía de guitarra',
             source: '/audios/guitar.mp3'
-            // source: 'https://cdn.pixabay.com/download/audio/2023/06/19/audio_871c28dde0.mp3'
         },
         {
             id: 'rainSound',
@@ -53,7 +50,6 @@ const NewTaskFormHandler = () => {
             value: 'rainSound',
             label: 'Sonido de lluvia',
             source: '/audios/lluvia.mp3'
-            // source: 'https://cdn.pixabay.com/download/audio/2024/05/21/audio_08ef8717b4.mp3'
         },
         {
             id: 'waveSound',
@@ -61,7 +57,6 @@ const NewTaskFormHandler = () => {
             value: 'waveSound',
             label: 'Sonido de olas',
             source: '/audios/olas.mp3'
-            // source: 'https://cdn.pixabay.com/download/audio/2021/08/09/audio_165a149ae7.mp3'
         },
     ]
 
