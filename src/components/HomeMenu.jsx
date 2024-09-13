@@ -1,8 +1,10 @@
+/* eslint-disable react/prop-types */
 import { Link } from "react-router-dom";
 import NotificationsSwitch from "./NotificationsSwitch";
 import ResetAppButton from "./ResetAppButton";
 
 const HomeMenu = () => {
+
     return (
         <nav className="fixed flex flex-col justify-between top-20 left-0 bottom-12 w-2/3 bg-colorPrincipal border-r-2 border-r-colorAcento border-r-dotted border-opacity-30 pt-4 pb-12 py-4 -translate-x-full will-change-transform">
             <ul className="flex flex-col h-full list-none gap-5 *:px-4">
