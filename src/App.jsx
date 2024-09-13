@@ -49,7 +49,7 @@ function App() {
       }).then((result) => {
         if (result.isConfirmed) {
           deferredPrompt.prompt();
-
+          
           deferredPrompt.userChoice.then((choice) => {
             if (choice.outcome === 'accepted') {
               console.log('User accepted the A2HS prompt');

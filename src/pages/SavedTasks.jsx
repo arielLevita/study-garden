@@ -17,6 +17,7 @@ const SavedTasks = () => {
         );
     };
 
+    // TODO VER POR QUÉ BORRA SÓLO LA ÚLTIMA EN LUGAR DE LA SELECCIONADA.
     const handleDeleteTask = () => {
         savedTasks = savedTasks.filter((task) => task.id !== selectedTask.id);
         tasks.otherTasks = savedTasks;
