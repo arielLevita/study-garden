@@ -1,45 +1,23 @@
 /* eslint-disable react/prop-types */
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { LOCAL_STORAGE_KEY } from "../App";
+// import { useState } from "react";
 import Lottie from "lottie-react";
-import plant01 from "../assets/AnimatedPlants/plant01-animation.json";
-import plant02 from "../assets/AnimatedPlants/plant02-animation.json";
-import plant04 from "../assets/AnimatedPlants/plant04-animation.json";
-import plant06 from "../assets/AnimatedPlants/plant06-animation.json";
-import plant07 from "../assets/AnimatedPlants/plant07-animation.json";
-import plant09 from "../assets/AnimatedPlants/plant09-animation.json";
 import AnimatedPage from "../components/AnimatedPage";
 
 const TaskConfiguration = ({
+    plants,
+    taskTitles,
     currentDescription,
-    currentTitle,
+    selectedTitle,
     currentTimer,
+    currentPlant,
+    handlePlantChange,
+    handleSelectedTitle,
     selectedAudio,
     adjustTimerAmount,
     onSubmit,
 }) => {
-    
-    const [taskTitles, setTaskTitles] = useState([]);
-    const tasks = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
-    const currentPlant = tasks.currentTask.plant;
-
-    const plants = [
-        { plant: plant01, name: plant01.nm, speed: 0.25 },
-        { plant: plant02, name: plant02.nm, speed: 0.25 },
-        { plant: plant06, name: plant06.nm, speed: 1 },
-        { plant: plant04, name: plant04.nm, speed: 0.25 },
-        { plant: plant07, name: plant07.nm, speed: 0.25 },
-        { plant: plant09, name: plant09.nm, speed: 1 },
-    ];
-
-    useEffect(() => {
-        const filteredTasks = tasks.otherTasks
-            .filter((task) => task.title !== currentTitle)
-            .splice(0, 2);
-        setTaskTitles([...filteredTasks.map((task) => task.title), currentTitle]);
-    }, [currentTitle, tasks.otherTasks]);
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -55,9 +33,9 @@ const TaskConfiguration = ({
         onSubmit(updatedCurrentTask);
     };
 
-    /* if (!currentPlant) {
+    if (!currentPlant || !taskTitles)  {
         return <div>Loading...</div>;
-      } */
+    }
 
     return (
         <section className="h-full bg-colorPrincipal">
@@ -96,7 +74,8 @@ const TaskConfiguration = ({
                                                         name="plant"
                                                         value={plant.name}
                                                         className="absolute top-0 left-0 hidden"
-                                                        defaultChecked={currentPlant?.name == plant.name}
+                                                        defaultChecked={currentPlant == plant.name}
+                                                        onChange={handlePlantChange}
                                                     />
                                                 </label>
                                             </div>
@@ -132,7 +111,8 @@ const TaskConfiguration = ({
                                                         value={title}
                                                         name="title"
                                                         className="hidden"
-                                                        defaultChecked={index == 2}
+                                                        checked={selectedTitle === title}
+                                                        onChange={handleSelectedTitle}
                                                     />
                                                 </label>
                                             </div>
