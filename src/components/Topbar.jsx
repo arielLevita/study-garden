@@ -59,12 +59,12 @@ const Topbar = ({ isInstalled, handleInstall }) => {
                         <button type='button' className="text-white text-2xl mx-4">{currentPath}</button>
                     </div>
                 </div>
-                <div>
+                <div className="h-10">
                     {
                         !isInstalled && 
                         <motion.button 
                             onClick={handleInstall} 
-                            className='w-fit max-w-24 text-sm text-center text-colorPrincipal italic border border-colorPrincipal border-opacity-50 bg-colorSecundario rounded-full [-webkit-line-clamp:2] shadow-[1px_2px_2px_rgba(240,240,240,0.3)] px-2 py-1 mx-4'
+                            className='h-full w-full max-w-32 text-sm text-center text-colorPrincipal italic border border-colorPrincipal border-opacity-50 bg-colorSecundario rounded-xl shadow-[1px_2px_2px_rgba(240,240,240,0.3)] px-4 py-1'
                             whileTap={{ scale: 0.99, translateX: 2, translateY: 2 }}
                             transition={{ type: "spring", stiffness: 400, damping: 17 }}
                         >

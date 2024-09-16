@@ -90,14 +90,14 @@ const ContactFormPage = () => {
                                     ></textarea>
                                 </label>
 
-                                <div className="flex justify-between my-4">
+                                <div className="w-full flex justify-around items-center py-4">
                                     <button
-                                        className="rounded-full text-colorSecundario border border-colorSecundario w-1/4 py-1"
+                                        className="w-2/5 bg-colorPrincipal rounded-full border border-colorSecundario p-2"
                                         type="reset"
                                     >
                                         Borrar
                                     </button>
-                                    <motion.button whileTap={{ scale: 0.97 }} className="rounded-full text-black bg-colorAcento shadow ml-auto w-1/2 py-1" type="submit" value="send">
+                                    <motion.button whileTap={{ scale: 0.97 }} className="w-2/5 bg-colorAcento rounded-full p-2" type="submit" value="send">
                                         Enviar
                                     </motion.button>
                                 </div>
