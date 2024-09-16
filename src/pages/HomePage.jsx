@@ -41,7 +41,7 @@ const HomePage = () => {
     useEffect(() => {
         const defaultTask = {
             id: 1,
-            title: "Estudiando",
+            title: "Estudiando para los parciales",
             description: "",
             plant: { plant: plant01, name: plant01.nm, speed: 0.25 },
             timer: 40,
@@ -61,7 +61,7 @@ const HomePage = () => {
             otherTasks: [
                 {
                     id: 1,
-                    title: "Estudiando",
+                    title: "Desayunando en casa",
                     description:
                         "Esta tarea exite por defecto. Puede ser eliminada en la página de tareas guardadas.",
                     plant: { plant: plant01, name: plant01.nm, speed: 0.25 },
@@ -76,7 +76,7 @@ const HomePage = () => {
                 },
                 {
                     id: 2,
-                    title: "Trabajando",
+                    title: "Cortando el pasto",
                     description:
                         "Esta tarea exite por defecto. Puede ser eliminada en la página de tareas guardadas.",
                     plant: { plant: plant04, name: plant04.nm, speed: 0.25 },
@@ -91,7 +91,7 @@ const HomePage = () => {
                 },
                 {
                     id: 3,
-                    title: "Limpiando",
+                    title: "Limpiando la habitación",
                     description:
                         "Esta tarea exite por defecto. Puede ser eliminada en la página de tareas guardadas.",
                     plant: { plant: plant01, name: plant01.nm, speed: 0.25 },
@@ -221,8 +221,6 @@ const HomePage = () => {
         pauseAudio();
     };
 
-    // TODO PASAR EL RELOJ Y TODO A UN COMPONENTE APARTE
-
     return (
         <section className="h-full">
             <AnimatedPage>
@@ -269,7 +267,7 @@ const HomePage = () => {
                         </div>
 
                         <div className="[flex-grow:8] flex flex-col justify-around items-center py-8">
-                            <h2 className="font-semibold text-3xl">{currentTask?.title}</h2>
+                            <h2 className="font-semibold text-center text-3xl">{currentTask?.title}</h2>
                             <div>
                                 <Lottie
                                     className="w-2/3 mx-auto"

@@ -17,7 +17,6 @@ const SavedTasks = () => {
         );
     };
 
-    // TODO VER POR QUÉ BORRA SÓLO LA ÚLTIMA EN LUGAR DE LA SELECCIONADA.
     const handleDeleteTask = () => {
         savedTasks = savedTasks.filter((task) => task.id !== selectedTask.id);
         tasks.otherTasks = savedTasks;
@@ -37,8 +36,9 @@ const SavedTasks = () => {
             <AnimatedPage>
                 <div>
                     <div className="flex flex-col max-w-md h-full mx-auto">
-                        <div className="h-[calc(100vh-228px)] overflow-y-scroll">
-                            <div className="grid grid-cols-2 gap-6 p-4">
+                        <div className="h-[calc(100vh-228px)] overflow-y-scroll p-4">
+                            <h3 className='text-colorSecundario text-xl font-semibold mb-4'>Seleccione una tarea</h3>
+                            <div className="grid grid-cols-2 gap-6">
                                 {savedTasks?.map((task) => (
                                     <label
                                         key={task.id}
@@ -74,10 +74,10 @@ const SavedTasks = () => {
                                             name="savedtask"
                                             value={task.id}
                                             className="hidden"
-                                            defaultChecked={tasks.currentTask?.title == task.title}
+                                            // defaultChecked={tasks.currentTask?.title == task.title}
                                             onChange={handleTaskChange}
                                         />
-                                        <h4 className="text-lg break-words">{task.title}</h4>
+                                        <h4 className="text-lg [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:2] overflow-hidden text-ellipsis">{task.title}</h4>
                                         <div>
                                             <Lottie
                                                 className="w-2/3 aspect-square bg-colorSecundario rounded-full p-2 mx-auto"

@@ -35,13 +35,11 @@ const TaskConfiguration = ({
     ];
 
     useEffect(() => {
-        setTaskTitles(
-            tasks.otherTasks
-                .map((task) => task.title)
-                .splice(0, 2)
-                .concat(currentTitle)
-        );
-    }, [currentTitle]);
+        const filteredTasks = tasks.otherTasks
+            .filter((task) => task.title !== currentTitle)
+            .splice(0, 2);
+        setTaskTitles([...filteredTasks.map((task) => task.title), currentTitle]);
+    }, [currentTitle, tasks.otherTasks]);
 
     const handleSubmit = (event) => {
         event.preventDefault();

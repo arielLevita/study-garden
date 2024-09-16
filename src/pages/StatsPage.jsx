@@ -74,6 +74,7 @@ const StatsPage = () => {
                             </div>
                         </div>
                         <div>
+                            <h3 className="text-colorSecundario text-xl font-semibold mb-4">Estadísticas de uso</h3>
                             <label className="relative group flex justify-around items-center w-1/2 h-8 bg-white bg-opacity-35 shadow-sm rounded-full border border-colorSecundario border-opacity-25 mb-2">
                                 <input type="checkbox" value="" className="hidden" onChange={() => setShowDailyStats(!showDailyStats)} />
                                 <div className='absolute flex items-center h-full w-1/2 top-0 left-0 drop-shadow-[1px_2px_2px_rgba(0,0,0,0.3)] bg-colorAcento rounded-full transition ease-in-out delay-150 group-has-[:checked]:translate-x-full *:w-full *:text-center *:text-black *:animate-fadeIn'>
