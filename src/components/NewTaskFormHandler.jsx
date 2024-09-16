@@ -5,14 +5,28 @@ import { LOCAL_STORAGE_KEY } from "../App";
 import AudioSelector from '../pages/AudioSelector';
 import TaskConfiguration from '../pages/TaskConfiguration';
 import TaskDescriptionPage from '../pages/TaskDescriptionPage';
+import plant01 from "../assets/AnimatedPlants/plant01-animation.json";
+import plant02 from "../assets/AnimatedPlants/plant02-animation.json";
+import plant04 from "../assets/AnimatedPlants/plant04-animation.json";
+import plant06 from "../assets/AnimatedPlants/plant06-animation.json";
+import plant07 from "../assets/AnimatedPlants/plant07-animation.json";
+import plant09 from "../assets/AnimatedPlants/plant09-animation.json";
+
+
+
+// TODO PROBLEMA CON CURRENTPlant
+
 
 const NewTaskFormHandler = () => {
-
+    
     const [selectedAudio, setSelectedAudio] = useState(null);
-    const [currentTask, setCurrentTask] = useState(null)
+    const [currentTask, setCurrentTask] = useState(null);
+    const [currentPlant, setCurrentPlant] = useState(null)
     const [currentTimer, setCurrentTimer] = useState(0);
     const [currentTitle, setCurrentTitle] = useState("");
+    const [selectedTitle, setSelectedTitle] = useState("");
     const [currentDescription, setCurrentDescription] = useState("");
+    const [taskTitles, setTaskTitles] = useState([]);
     const navigate = useNavigate();
 
     const audios = [
@@ -58,16 +72,35 @@ const NewTaskFormHandler = () => {
             label: 'Sonido de olas',
             source: '/audios/olas.mp3'
         },
-    ]
+    ];
+
+    const plants = [
+        { plant: plant01, name: plant01.nm, speed: 0.25 },
+        { plant: plant02, name: plant02.nm, speed: 0.25 },
+        { plant: plant06, name: plant06.nm, speed: 1 },
+        { plant: plant04, name: plant04.nm, speed: 0.25 },
+        { plant: plant07, name: plant07.nm, speed: 0.25 },
+        { plant: plant09, name: plant09.nm, speed: 1 },
+    ];
 
     useEffect(() => {
         const tasks = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY))
         setCurrentTask(tasks.currentTask)
         setSelectedAudio(tasks.currentTask.audio);
+        setCurrentPlant(tasks.currentTask.plant.name);
         setCurrentTimer(tasks.currentTask.timer);
         setCurrentTitle(tasks.currentTask.title);
+        setSelectedTitle(tasks.currentTask.title);
         setCurrentDescription(tasks.currentTask.description);
     }, [])
+    
+    useEffect(() => {
+        const tasks = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
+        const filteredTasks = tasks.otherTasks
+            .filter((task) => task.title !== currentTitle)
+            .splice(0, 2);
+        setTaskTitles([...filteredTasks.map((task) => task.title), currentTitle]);
+    }, [currentTitle]);
 
     const adjustTimerAmount = (minutes) => {
         setCurrentTimer(currentTimer + minutes);
@@ -75,6 +108,14 @@ const NewTaskFormHandler = () => {
 
     const handleTitleChange = (event) => {
         setCurrentTitle(event.target.value);
+    };
+    
+    const handleSelectedTitle = (event) => {
+        setSelectedTitle(event.target.value);
+    };
+
+    const handlePlantChange = (event) => {
+        setCurrentPlant(event.target.value);
     };
 
     const handleDescriptionChange = (event) => {
@@ -108,13 +149,19 @@ const NewTaskFormHandler = () => {
                 <Routes>
                     <Route path={'taskconfiguration'} element={
                         <TaskConfiguration
+                            plants={plants}
+                            taskTitles={taskTitles}
                             currentTask={currentTask}
+                            currentPlant={currentPlant}
                             currentTitle={currentTitle}
+                            selectedTitle={selectedTitle}
                             currentDescription={currentDescription}
                             currentTimer={currentTimer}
                             selectedAudio={selectedAudio}
+                            handlePlantChange={handlePlantChange}
                             adjustTimerAmount={adjustTimerAmount}
                             handleTitleChange={handleTitleChange}
+                            handleSelectedTitle={handleSelectedTitle}
                             onSubmit={onSubmit}
                         />
                     } />
