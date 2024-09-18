@@ -41,7 +41,7 @@ const HomePage = () => {
     useEffect(() => {
         const defaultTask = {
             id: 1,
-            title: "Estudiando para los parciales",
+            title: "Estudiando para los exámenes",
             description: "",
             plant: { plant: plant01, name: plant01.nm, speed: 0.25 },
             timer: 40,
@@ -63,7 +63,7 @@ const HomePage = () => {
                     id: 1,
                     title: "Desayunando en casa",
                     description:
-                        "Esta tarea exite por defecto. Puede ser eliminada en la página de tareas guardadas.",
+                        "Esta tarea existe por defecto. Puede ser eliminada en la página de tareas guardadas.",
                     plant: { plant: plant01, name: plant01.nm, speed: 0.25 },
                     timer: 40,
                     audio: {
@@ -78,7 +78,7 @@ const HomePage = () => {
                     id: 2,
                     title: "Cortando el pasto",
                     description:
-                        "Esta tarea exite por defecto. Puede ser eliminada en la página de tareas guardadas.",
+                        "Esta tarea existe por defecto. Puede ser eliminada en la página de tareas guardadas.",
                     plant: { plant: plant04, name: plant04.nm, speed: 0.25 },
                     timer: 35,
                     audio: {
@@ -93,7 +93,7 @@ const HomePage = () => {
                     id: 3,
                     title: "Limpiando la habitación",
                     description:
-                        "Esta tarea exite por defecto. Puede ser eliminada en la página de tareas guardadas.",
+                        "Esta tarea existe por defecto. Puede ser eliminada en la página de tareas guardadas.",
                     plant: { plant: plant01, name: plant01.nm, speed: 0.25 },
                     timer: 25,
                     audio: {
